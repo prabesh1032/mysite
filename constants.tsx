@@ -6,7 +6,7 @@ import {
 
 export const portfolioData = {
   name: "Prabesh Acharya",
-  role: "Full-Stack Web Developer",
+  role: "Web Developer",
   tagline: "Building clean, functional, and user-friendly web experiences.",
   about: "A dedicated web developer with a strong passion for building clean, functional, and user-friendly web experiences. With a Bachelor's degree in Information Management from Lumbini ICT Campus, I specialize in Laravel and JavaScript, and enjoy bringing ideas to life through efficient backend logic and responsive frontend design using TailwindCSS. I focus on writing thoughtful, maintainable code and crafting digital solutions that are both technically sound and intuitive for users.",
   location: "Nepal",
@@ -46,7 +46,8 @@ export const PROJECTS: Project[] = [
     description: "Connect Australian Education and Visa Services is your trusted partner for studying and immigrating to Australia. Comprehensive education and migration consulting services with personalized guidance for international students. Services include course selection, visa documentation, interview preparation, and post-arrival orientation.",
     tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
     image: "/images/connect/aussflag.png",
-    github: "https://github.com/sudipparajulee/connect-for-study"
+    github: "https://github.com/sudipparajulee/connect-for-study",
+    live: "https://connectforstudy.com.au/"
   },
   {
     id: 2,
@@ -55,7 +56,8 @@ export const PROJECTS: Project[] = [
     description: "Professional platform offering comprehensive cleaning and sanitation solutions for residential and commercial properties. Features service packages, pricing transparency, booking system, real-time confirmation, and customer loyalty programs with verified professional cleaners.",
     tech: ["Laravel", "MySQL", "JavaScript", "Tailwind CSS"],
     image: "/images/smarthand/1760520326.jpg",
-    github: "https://github.com/Amansolta/smartHandsCleaningServices"
+    github: "https://github.com/Amansolta/smartHandsCleaningServices",
+    live: "http://smarthandscleaningservices.com.au/"
   },
   {
     id: 3,
@@ -223,9 +225,9 @@ export const SERVICES: Service[] = [
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
-  { id: 1, name: "Client Review", role: "Project Manager", text: "Prabesh delivered exceptional work on our travel platform. His attention to detail and technical expertise made the project a success.", avatar: "/images/profile.jpg" },
-  { id: 2, name: "Team Member", role: "Senior Developer", text: "Working with Prabesh was a great experience. He's dedicated, skilled, and always willing to learn and improve.", avatar: "/images/profile2.jpg" },
-  { id: 3, name: "Colleague", role: "Full Stack Developer", text: "Prabesh has strong problem-solving skills and writes clean, maintainable code. A valuable team member.", avatar: "/images/profile3.jpg" }
+  { id: 1, name: "Pratik Tiwari", role: "Graphics Designer", text: "Prabesh delivered exceptional work on our travel platform. His attention to detail and technical expertise made the project a success.", avatar: "/images/testinomials/pratik.jpg" },
+  { id: 2, name: "Pradip Khanal", role: "Front-End Developer", text: "Working with Prabesh was a great experience. He's dedicated, skilled, and always willing to learn and improve.", avatar: "/images/testinomials/pradip.jpg" },
+  { id: 3, name: "Arjun Bhusal", role: "Back-End Developer", text: "Prabesh has strong problem-solving skills and writes clean, maintainable code. A valuable team member.", avatar: "/images/testinomials/arjun.jpg" }
 ];
 
 export const EDUCATION = [

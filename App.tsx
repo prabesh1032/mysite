@@ -158,8 +158,6 @@ const SkillsUniverse = () => (
 );
 
 const ProjectsUniverse = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
   return (
     <div className="max-w-6xl mx-auto min-h-full flex flex-col justify-center relative py-12 md:py-20">
       <SectionHeading title="Creation Realm" subtitle="Deployed Entities" />
@@ -167,142 +165,73 @@ const ProjectsUniverse = () => {
         {PROJECTS.map((project, idx) => (
           <motion.div
             key={project.id}
-            layoutId={`project-${project.id}`}
-            onClick={() => setSelectedProject(project)}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.1 }}
-            className="cursor-pointer group"
+            className="group"
           >
-            <GlassPanel className="h-full border-neon-blue/20 group-hover:border-neon-blue/60 transition-all duration-300">
-              <div className="relative h-48 overflow-hidden">
+            <GlassPanel className="h-full border-neon-blue/20 hover:border-neon-blue/60 transition-all duration-300 flex flex-col">
+              <div className="relative h-48 overflow-hidden rounded-t-xl">
                 <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                   <span className="text-neon-blue border border-neon-blue px-4 py-2 rounded font-orbitron text-sm">View Data</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60" />
+                <div className="absolute top-3 right-3">
+                  <span className="px-3 py-1 bg-neon-pink/80 backdrop-blur-sm text-white text-xs rounded-full font-mono uppercase border border-neon-pink">
+                    {project.category}
+                  </span>
                 </div>
               </div>
-              <div className="p-4">
-                <div className="text-xs text-neon-pink mb-1 font-mono uppercase">{project.category}</div>
-                <h3 className="text-xl font-bold font-orbitron text-white mb-2">{project.title}</h3>
-                <div className="flex flex-wrap gap-2 mt-3">
-                  {project.tech.map(t => (
-                    <span key={t} className="text-[10px] bg-gray-800 text-gray-300 px-2 py-1 rounded border border-gray-700">{t}</span>
+              
+              <div className="p-5 flex flex-col flex-grow">
+                <h3 className="text-xl font-bold font-orbitron text-white mb-3 group-hover:text-neon-blue transition-colors">
+                  {project.title}
+                </h3>
+                
+                <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-grow line-clamp-3">
+                  {project.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tech.slice(0, 4).map(t => (
+                    <span key={t} className="text-[10px] bg-neon-blue/10 text-neon-blue px-2 py-1 rounded border border-neon-blue/30 font-medium">
+                      {t}
+                    </span>
                   ))}
+                  {project.tech.length > 4 && (
+                    <span className="text-[10px] bg-gray-800 text-gray-400 px-2 py-1 rounded border border-gray-700">
+                      +{project.tech.length - 4}
+                    </span>
+                  )}
+                </div>
+                
+                <div className="flex gap-3 mt-auto">
+                  {project.github && (
+                    <a 
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] text-sm font-semibold group/btn"
+                    >
+                      <Github size={16} className="group-hover/btn:rotate-12 transition-transform" />
+                      <span>GitHub</span>
+                    </a>
+                  )}
+                  {project.live && (
+                    <a 
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-neon-blue to-neon-purple hover:shadow-[0_0_20px_rgba(0,243,255,0.5)] text-white rounded-lg transition-all duration-300 text-sm font-semibold group/btn"
+                    >
+                      <ExternalLink size={16} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                      <span>Live</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </GlassPanel>
           </motion.div>
         ))}
       </div>
-
-      <AnimatePresence>
-        {selectedProject && (
-          <>
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-md" 
-              onClick={() => setSelectedProject(null)}
-              style={{ position: 'fixed' }}
-            />
-            <div 
-              className="z-[61] w-[90%] max-w-3xl"
-              style={{ 
-                position: 'fixed',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)'
-              }}
-            >
-              <motion.div 
-                initial={{ scale: 0.5, opacity: 0, rotateX: 45 }}
-                animate={{ scale: 1, opacity: 1, rotateX: 0 }}
-                exit={{ scale: 0.5, opacity: 0, rotateX: -45 }}
-                transition={{ type: "spring", damping: 20, stiffness: 200 }}
-                onClick={(e) => e.stopPropagation()}
-                className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-2 border-neon-blue rounded-3xl overflow-hidden shadow-[0_0_80px_rgba(0,243,255,0.4),inset_0_0_60px_rgba(0,243,255,0.1)] relative"
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                {/* Close Button */}
-                <button 
-                  onClick={() => setSelectedProject(null)}
-                  className="absolute top-4 right-4 z-10 bg-red-500/20 hover:bg-red-500/40 p-3 rounded-full transition-all duration-300 text-white border border-red-500/50 hover:border-red-500 hover:scale-110 hover:rotate-90 shadow-lg"
-                >
-                  <X size={24} />
-                </button>
-
-                <div className="max-h-[85vh] overflow-y-auto custom-scrollbar">
-                  {/* Image Section */}
-                  <div className="relative h-72 overflow-hidden">
-                    <img 
-                      src={selectedProject.image} 
-                      alt={selectedProject.title} 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
-                  </div>
-
-                  {/* Content Section */}
-                  <div className="p-8 space-y-6">
-                    {/* Title & Category */}
-                    <div>
-                      <h2 className="text-4xl font-orbitron font-bold text-white mb-3 drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
-                        {selectedProject.title}
-                      </h2>
-                      <div className="inline-block px-4 py-2 bg-neon-pink/20 border border-neon-pink rounded-full">
-                        <p className="text-neon-pink font-mono text-sm uppercase tracking-wider">{selectedProject.category}</p>
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-gray-300 leading-relaxed text-lg font-rajdhani">
-                      {selectedProject.description}
-                    </p>
-                    
-                    {/* Technologies */}
-                    <div>
-                      <h4 className="text-sm text-neon-blue uppercase mb-3 font-bold tracking-wider flex items-center gap-2">
-                        <span className="w-8 h-0.5 bg-neon-blue"></span>
-                        Technologies Used
-                      </h4>
-                      <div className="flex flex-wrap gap-3">
-                        {selectedProject.tech.map((t, idx) => (
-                          <motion.span 
-                            key={t}
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: idx * 0.1 }}
-                            className="px-4 py-2 bg-neon-blue/10 text-neon-blue rounded-lg border border-neon-blue/30 hover:bg-neon-blue/20 hover:border-neon-blue transition-all text-sm font-semibold"
-                          >
-                            {t}
-                          </motion.span>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {/* Action Button */}
-                    {selectedProject.github && (
-                      <div className="pt-4">
-                        <a 
-                          href={selectedProject.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-neon-blue to-neon-purple text-white rounded-xl font-bold hover:shadow-[0_0_30px_rgba(0,243,255,0.6)] transition-all duration-300 transform hover:scale-105 w-full"
-                        >
-                          <Github size={22} /> 
-                          <span>View Source Code</span>
-                          <ExternalLink size={18} />
-                        </a>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </>
-        )}
-      </AnimatePresence>
     </div>
   );
 };
@@ -440,59 +369,76 @@ const TestimonialsUniverse = () => (
 
 const StatsUniverse = () => {
   const data = SKILLS.map(s => ({ subject: s.name, A: s.level, fullMark: 100 }));
-  
+
   return (
-    <div className="max-w-5xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
+    <div className="max-w-6xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
       <SectionHeading title="Stats Nebula" subtitle="Data Visualization" />
-      <div className="grid md:grid-cols-2 gap-8 h-[400px]">
-        <GlassPanel className="p-4 flex items-center justify-center">
-          <ResponsiveContainer width="100%" height="100%">
-            <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
-              <PolarGrid stroke="#333" />
-              <PolarAngleAxis dataKey="subject" tick={{ fill: '#9ca3af', fontSize: 10 }} />
-              <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-              <Radar name="Skills" dataKey="A" stroke="#00f3ff" fill="#00f3ff" fillOpacity={0.3} />
-              <RechartTooltip 
-                contentStyle={{ backgroundColor: '#000', borderColor: '#333' }}
-                itemStyle={{ color: '#00f3ff' }} 
-              />
-            </RadarChart>
-          </ResponsiveContainer>
-        </GlassPanel>
-        
-        <GlassPanel className="p-4 flex flex-col justify-center gap-6">
-          <div className="flex items-center justify-between px-4">
-             <div className="text-center">
-                <h3 className="text-4xl font-bold text-white mb-1">3+</h3>
-                <p className="text-gray-400 text-sm">Years Exp</p>
-             </div>
-             <div className="text-center">
-                <h3 className="text-4xl font-bold text-white mb-1">50+</h3>
-                <p className="text-gray-400 text-sm">Projects</p>
-             </div>
-             <div className="text-center">
-                <h3 className="text-4xl font-bold text-white mb-1">100%</h3>
-                <p className="text-gray-400 text-sm">Commitment</p>
-             </div>
+      
+      <GlassPanel className="p-6">
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="h-[400px] flex items-center justify-center">
+            <ResponsiveContainer width="100%" height="100%">
+              <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
+                <PolarGrid stroke="#333" />
+                <PolarAngleAxis dataKey="subject" tick={{ fill: '#9ca3af', fontSize: 10 }} />
+                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                <Radar name="Skills" dataKey="A" stroke="#00f3ff" fill="#00f3ff" fillOpacity={0.3} />
+                <RechartTooltip 
+                  contentStyle={{ backgroundColor: '#000', borderColor: '#333' }}
+                  itemStyle={{ color: '#00f3ff' }} 
+                />
+              </RadarChart>
+            </ResponsiveContainer>
           </div>
-          <div className="px-4">
-             <h4 className="text-neon-pink mb-2 font-mono text-sm">System Status</h4>
-             <div className="w-full bg-gray-800 h-4 rounded-full overflow-hidden relative">
-               <div className="absolute inset-0 bg-gray-800 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_50%,transparent_75%)] bg-[length:10px_10px]" />
-               <motion.div 
-                 initial={{ width: 0 }}
-                 animate={{ width: "98%" }}
-                 transition={{ duration: 2 }}
-                 className="h-full bg-gradient-to-r from-green-500 to-emerald-400"
-               />
-             </div>
-             <div className="flex justify-between text-xs text-gray-500 mt-1">
-               <span>CPU Load: Normal</span>
-               <span className="text-green-400">Operational</span>
-             </div>
+          
+          <div className="flex flex-col justify-center space-y-6">
+            <div>
+              <h3 className="text-2xl font-orbitron font-bold text-neon-blue mb-4">
+                Technical Proficiency
+              </h3>
+              <p className="text-gray-400 leading-relaxed mb-6">
+                My skill set spans across modern web technologies, with expertise in both frontend and backend development. Constantly learning and adapting to new technologies.
+              </p>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-3 h-3 rounded-full bg-neon-blue animate-pulse" />
+                <span className="text-gray-300 text-sm">Full-Stack Development</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-3 h-3 rounded-full bg-neon-purple animate-pulse delay-75" />
+                <span className="text-gray-300 text-sm">Modern JavaScript Frameworks</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-3 h-3 rounded-full bg-neon-pink animate-pulse delay-150" />
+                <span className="text-gray-300 text-sm">Database Design & Optimization</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse delay-200" />
+                <span className="text-gray-300 text-sm">Responsive & Accessible Design</span>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-gray-800">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm text-gray-400 font-mono">Overall Performance</span>
+                <span className="text-neon-blue font-bold font-mono">95%</span>
+              </div>
+              <div className="w-full bg-gray-800 h-3 rounded-full overflow-hidden relative">
+                <motion.div 
+                  initial={{ width: 0 }}
+                  animate={{ width: "95%" }}
+                  transition={{ duration: 2, delay: 0.5 }}
+                  className="h-full bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink relative"
+                >
+                  <div className="absolute inset-0 bg-white/20 animate-pulse" />
+                </motion.div>
+              </div>
+            </div>
           </div>
-        </GlassPanel>
-      </div>
+        </div>
+      </GlassPanel>
     </div>
   );
 };
@@ -641,7 +587,7 @@ const ContactUniverse = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20 px-4">
+    <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20 px-4 relative">
       <SectionHeading title="Final Gateway" subtitle="Establish Connection" />
       
       {/* Notification */}
@@ -651,9 +597,9 @@ const ContactUniverse = () => {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
-            className="fixed top-4 left-1/2 transform -translate-x-1/2 z-[9999] max-w-md w-full mx-4"
+            className="fixed top-4 left-4 right-4 md:absolute md:top-32 md:left-8 md:right-auto z-[9999] max-w-md"
           >
-            <div className={`rounded-lg p-4 shadow-xl bg-glass-bg backdrop-blur-xl border-l-4 ${
+            <div className={`rounded-lg p-4 shadow-2xl bg-black/95 backdrop-blur-xl border-l-4 ${
               notification.type === 'success' ? 'border-green-500' : 'border-red-500'
             }`}>
               <div className="flex items-start justify-between gap-2">
@@ -848,6 +794,14 @@ const ContactUniverse = () => {
 
 const App: React.FC = () => {
   const [activeUniverse, setActiveUniverse] = useState<string>('hero');
+  const mainRef = useRef<HTMLDivElement>(null);
+
+  // Scroll to top whenever universe changes
+  useEffect(() => {
+    if (mainRef.current) {
+      mainRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [activeUniverse]);
 
   // Map IDs to components
   const renderUniverse = () => {
@@ -873,7 +827,7 @@ const App: React.FC = () => {
       <Starfield />
       
       {/* Main Content Area with "Warp" Transition */}
-      <main className="relative w-full h-full pb-32 pt-10 px-4 md:px-8 overflow-y-auto scroll-smooth">
+      <main ref={mainRef} className="relative w-full h-full pb-32 pt-10 px-4 md:px-8 overflow-y-auto scroll-smooth">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeUniverse}

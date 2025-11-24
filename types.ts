@@ -6,6 +6,7 @@ export interface Project {
   tech: string[];
   image: string;
   github?: string;
+  live?: string;
 }
 
 export interface Skill {
