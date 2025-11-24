@@ -5,97 +5,242 @@ import {
 } from 'lucide-react';
 
 export const portfolioData = {
-  name: "Alex 'Void' Walker",
-  role: "Full-Stack Neural Architect",
-  tagline: "Building digital realities across the multiverse.",
-  about: "I am a creative technologist specializing in React ecosystems and immersive web experiences. I blend high-performance code with stunning visual aesthetics to create applications that feel like they're from the future.",
-  location: "Sector 7, Earth-Prime",
-  email: "alex.walker@nexus.dev"
+  name: "Prabesh Acharya",
+  role: "Full-Stack Web Developer",
+  tagline: "Building clean, functional, and user-friendly web experiences.",
+  about: "A dedicated web developer with a strong passion for building clean, functional, and user-friendly web experiences. With a Bachelor's degree in Information Management from Lumbini ICT Campus, I specialize in Laravel and JavaScript, and enjoy bringing ideas to life through efficient backend logic and responsive frontend design using TailwindCSS. I focus on writing thoughtful, maintainable code and crafting digital solutions that are both technically sound and intuitive for users.",
+  location: "Nepal",
+  email: "prabesh11100@gmail.com",
+  phone: "+977 9812965110",
+  github: "https://github.com/prabesh1032",
+  linkedin: "https://www.linkedin.com/in/prabesh-acharya-8547a2321/",
+  instagram: "https://www.instagram.com/prabesh_ach/",
+  twitter: "https://x.com/PrabeshAch33319"
 };
 
 export const SKILLS: Skill[] = [
-  { name: "React / Next.js", level: 95, category: "Frontend" },
-  { name: "TypeScript", level: 90, category: "Frontend" },
-  { name: "Tailwind CSS", level: 98, category: "Design" },
-  { name: "Node.js", level: 85, category: "Backend" },
-  { name: "Three.js / R3F", level: 80, category: "Design" },
-  { name: "GraphQL", level: 82, category: "Backend" },
-  { name: "Python / AI", level: 75, category: "Tools" },
-  { name: "Docker / K8s", level: 70, category: "Tools" },
+  // Frontend Skills
+  { name: "HTML5 & CSS3", level: 95, category: "Frontend" },
+  { name: "JavaScript ES6+", level: 90, category: "Frontend" },
+  { name: "Tailwind CSS", level: 92, category: "Frontend" },
+  { name: "Responsive Design", level: 88, category: "Frontend" },
+  { name: "React", level: 75, category: "Frontend" },
+  
+  // Backend Skills
+  { name: "Laravel (PHP)", level: 85, category: "Backend" },
+  { name: "Blade Templating", level: 80, category: "Backend" },
+  { name: "MySQL / SQLite", level: 78, category: "Backend" },
+  { name: "REST API", level: 82, category: "Backend" },
+  
+  // Tools & Platforms
+  { name: "Git & GitHub", level: 85, category: "Tools" },
+  { name: "Vite", level: 80, category: "Tools" },
+  { name: "VS Code", level: 90, category: "Tools" },
 ];
 
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "Nebula Dashboard",
-    category: "Analytics",
-    description: "A real-time crypto analytics dashboard with holographic visualizations.",
-    tech: ["React", "D3.js", "WebSockets"],
-    image: "https://picsum.photos/600/400?random=1"
+    title: "Connect for Study",
+    category: "Education & Migration",
+    description: "Connect Australian Education and Visa Services is your trusted partner for studying and immigrating to Australia. Comprehensive education and migration consulting services with personalized guidance for international students. Services include course selection, visa documentation, interview preparation, and post-arrival orientation.",
+    tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
+    image: "/images/connect/aussflag.png",
+    github: "https://github.com/sudipparajulee/connect-for-study"
   },
   {
     id: 2,
-    title: "Quantum E-Com",
-    category: "E-Commerce",
-    description: "Headless e-commerce platform with AI-driven recommendations.",
-    tech: ["Next.js", "Shopify API", "Gemini"],
-    image: "https://picsum.photos/600/400?random=2"
+    title: "Smart Hand Cleaning Services",
+    category: "Service Platform",
+    description: "Professional platform offering comprehensive cleaning and sanitation solutions for residential and commercial properties. Features service packages, pricing transparency, booking system, real-time confirmation, and customer loyalty programs with verified professional cleaners.",
+    tech: ["Laravel", "MySQL", "JavaScript", "Tailwind CSS"],
+    image: "/images/smarthand/1760520326.jpg",
+    github: "https://github.com/Amansolta/smartHandsCleaningServices"
   },
   {
     id: 3,
-    title: "CyberSocial",
-    category: "Social",
-    description: "Decentralized social graph visualizer using WebGL.",
-    tech: ["Three.js", "React-Force-Graph", "Solidity"],
-    image: "https://picsum.photos/600/400?random=3"
+    title: "Chethna",
+    category: "E-Commerce",
+    description: "Advanced e-commerce platform designed to revolutionize online shopping for grocery and general merchandise. Features intelligent product categorization, secure checkout, order tracking, personalized recommendations, and comprehensive admin dashboard.",
+    tech: ["Laravel", "MySQL", "JavaScript", "Bootstrap"],
+    image: "/images/chethna/ecommerce.jpg",
+    github: "https://github.com/Amansolta/chetana"
+  },
+  {
+    id: 4,
+    title: "YatraSathi",
+    category: "Travel & Tourism",
+    description: "Comprehensive travel and adventure platform for modern travel enthusiasts. Features curated destinations, customized travel packages, interactive maps, real-time availability, dynamic package customization, user reviews, and secure booking with multiple payment options.",
+    tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
+    image: "/images/yatrasathi/home-bg2.jpg",
+    github: "https://github.com/prabesh1032/YatraSathi"
+  },
+  {
+    id: 5,
+    title: "Task Management",
+    category: "Productivity",
+    description: "Robust and user-friendly application designed to streamline task organization and progress tracking. Features task creation, editing, deletion with form validation, user dashboard, status tracking, and role-based access control system.",
+    tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
+    image: "/images/task management/task management.png",
+    github: "https://github.com/prabesh1032/Task-management"
+  },
+  {
+    id: 6,
+    title: "Seti-Style",
+    category: "E-Commerce",
+    description: "Modern e-commerce platform dedicated to fashion and apparel with curated collection of trendy clothing. Features secure checkout, real-time inventory tracking, size recommendation engine, personalized suggestions, and customer testimonials.",
+    tech: ["PHP", "MySQL", "Bootstrap", "JavaScript"],
+    image: "/images/setistyle/e-commerce.png",
+    github: "https://github.com/prabesh1032/Myfirstproject"
+  },
+  {
+    id: 7,
+    title: "FoodCircle",
+    category: "Social Platform",
+    description: "Vibrant social platform for food enthusiasts and culinary creators. Share recipes, food blogs, cooking tips, and culinary stories with comprehensive recipe database, community forums, chef profiles, and restaurant reviews.",
+    tech: ["Laravel", "JavaScript", "Tailwind CSS", "MySQL"],
+    image: "/images/foodcircle/foodcircle.jpg",
+    github: "https://github.com/prabesh1032/Food-Circle"
+  },
+  {
+    id: 8,
+    title: "Lumbini ICT Campus",
+    category: "Educational",
+    description: "Comprehensive digital platform showcasing institutional academic excellence, modern facilities, and vibrant student community. Features academic programs, faculty profiles, student resources, event management, alumni network, and virtual campus tours.",
+    tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
+    image: "/images/lumbini ict campus/ict.png",
+    github: "https://github.com/Amansolta/lict"
+  },
+  {
+    id: 9,
+    title: "Ankur Nepal",
+    category: "Non-Profit",
+    description: "Ankur Nepal is a dedicated non-profit organization committed to child welfare and community development. The website showcases ongoing projects, fundraising campaigns, volunteer opportunities, and impact stories with donation system and transparent financial reporting.",
+    tech: ["Laravel", "MySQL", "Bootstrap", "JavaScript"],
+    image: "/images/Ankur nepal/Ankurnepal.jpg",
+    github: "https://github.com/prabesh1032/ankur-nepal"
+  },
+  {
+    id: 10,
+    title: "Optical House",
+    category: "E-Commerce",
+    description: "Optical House is a premium eyewear e-commerce platform offering designer glasses, sunglasses, and contact lenses. Features virtual try-on, prescription management, home delivery, eye care tips, and expert consultation booking system.",
+    tech: ["Laravel", "MySQL", "JavaScript", "Tailwind CSS"],
+    image: "/images/optical house/glasses.jpeg",
+    github: "https://github.com/prabesh1032/optical-house"
+  },
+  {
+    id: 11,
+    title: "Opera Education",
+    category: "Educational",
+    description: "Opera Education is an innovative online learning platform offering courses, tutorials, and educational resources. Features course enrollment, progress tracking, certificate generation, interactive quizzes, instructor dashboard, and student performance analytics.",
+    tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
+    image: "/images/opera/Opera Logo.png",
+    github: "https://github.com/prabesh1032/opera-education"
+  },
+  {
+    id: 12,
+    title: "Portfolio Website",
+    category: "Personal",
+    description: "Modern, responsive personal portfolio website showcasing projects, skills, and professional experience. Features smooth animations, interactive UI elements, project galleries, contact form, and optimized performance.",
+    tech: ["HTML5", "CSS3", "JavaScript", "Tailwind CSS"],
+    image: "/images/portfolio/cooder.png",
+    github: "https://github.com/prabesh1032/Portfolio"
+  },
+  {
+    id: 13,
+    title: "Landing Page",
+    category: "Web Design",
+    description: "Creative and modern landing page template designed for startups, products, and services. Features hero sections, feature highlights, testimonials, pricing tables, newsletter subscription, and responsive design optimized for conversions.",
+    tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+    image: "/images/landing page/landing1.png",
+    github: "https://github.com/prabesh1032/landing-page"
   }
 ];
 
 export const EXPERIENCE: Experience[] = [
   {
     id: 1,
-    role: "Senior Frontend Engineer",
-    company: "TechNova Corp",
-    period: "2022 - Present",
-    description: "Leading the UI/UX overhaul of the flagship SaaS platform. Improved performance by 40%."
+    role: "Self-Taught Developer Journey",
+    company: "Personal Learning",
+    period: "2020 - Present",
+    description: "Learned web development through online courses, documentation, and consistent practice. Built hands-on experience with Laravel, modern JavaScript, and UI/UX principles by working on real-world challenges."
   },
   {
     id: 2,
-    role: "Full Stack Developer",
-    company: "Orbital Studios",
-    period: "2019 - 2022",
-    description: "Developed interactive marketing sites for Fortune 500 clients using WebGL and React."
+    role: "Bachelor's in Information Management",
+    company: "Lumbini ICT Campus",
+    period: "2022 - Present",
+    description: "Comprehensive program covering web technologies, database management, software engineering, and IT project management with hands-on practical experience."
   },
   {
     id: 3,
-    role: "Junior Developer",
-    company: "CodeFoundry",
-    period: "2018 - 2019",
-    description: "Maintained legacy codebases and migrated jQuery apps to React."
+    role: "Certifications & Workshops",
+    company: "Various Organizations",
+    period: "2022 - Present",
+    description: "Completed certifications in web development, participated in coding workshops and hackathons, and continuously sharpened skills through community engagement and practical learning."
+  },
+  {
+    id: 4,
+    role: "Internship – Web Development",
+    company: "BITS (Bitmat IT Solution)",
+    period: "2024",
+    description: "Gained real-world experience working on production-level projects in a collaborative environment. Focused on backend logic, frontend integration, and understanding client-driven development processes."
   }
 ];
 
 export const SERVICES: Service[] = [
-  { title: "Web Application Dev", icon: "Globe", description: "Scalable, high-performance web apps built with modern stacks." },
-  { title: "UI/UX Architecture", icon: "Layers", description: "Design systems and component libraries for cohesive user experiences." },
-  { title: "3D Web Integration", icon: "Cpu", description: "Immersive WebGL experiences using Three.js and R3F." },
+  { 
+    title: "Web Development", 
+    icon: "Globe", 
+    description: "Full-stack web applications with modern frameworks like Laravel and responsive design that scales beautifully. Tech: Laravel, JavaScript, PHP"
+  },
+  { 
+    title: "E-Commerce Solutions", 
+    icon: "Layers", 
+    description: "Complete online stores with payment integration, inventory management, and powerful admin panels. Tech: Payment Gateway, Cart System, Admin Panel"
+  },
+  { 
+    title: "API Development", 
+    icon: "Cpu", 
+    description: "RESTful APIs and robust backend services for mobile apps and web applications. Tech: REST API, JSON, Authentication"
+  },
+  { 
+    title: "Database Design", 
+    icon: "Globe", 
+    description: "Efficient database architecture and optimization for lightning-fast performance. Tech: MySQL, Optimization, Indexing"
+  },
+  { 
+    title: "UI/UX Implementation", 
+    icon: "Layers", 
+    description: "Beautiful, intuitive interfaces built with Tailwind CSS and modern design principles that enhance user experience."
+  },
+  { 
+    title: "Maintenance & Support", 
+    icon: "Cpu", 
+    description: "Ongoing support, bug fixes, updates, and performance optimization to keep your website running smoothly and securely."
+  }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
-  { id: 1, name: "Sarah Connor", role: "CTO, Skynet Inc", text: "Alex's code is cleaner than a fresh cyborg chassis. Highly recommended.", avatar: "https://picsum.photos/100/100?random=10" },
-  { id: 2, name: "Flynn", role: "Grid Architect", text: "Visually stunning work. He built a grid that changed everything.", avatar: "https://picsum.photos/100/100?random=11" },
-  { id: 3, name: "Neo", role: "The One", text: "He sees the matrix. The interfaces he builds are beyond reality.", avatar: "https://picsum.photos/100/100?random=12" }
+  { id: 1, name: "Client Review", role: "Project Manager", text: "Prabesh delivered exceptional work on our travel platform. His attention to detail and technical expertise made the project a success.", avatar: "/images/profile.jpg" },
+  { id: 2, name: "Team Member", role: "Senior Developer", text: "Working with Prabesh was a great experience. He's dedicated, skilled, and always willing to learn and improve.", avatar: "/images/profile2.jpg" },
+  { id: 3, name: "Colleague", role: "Full Stack Developer", text: "Prabesh has strong problem-solving skills and writes clean, maintainable code. A valuable team member.", avatar: "/images/profile3.jpg" }
 ];
 
 export const EDUCATION = [
-  { degree: "M.S. Computer Science", school: "MIT (Multiverse Institute of Tech)", year: "2018" },
-  { degree: "B.S. Digital Arts", school: "Design Academy of Mars", year: "2016" }
+  { degree: "Bachelor's in Information Management", school: "Lumbini ICT Campus", year: "2022 - Present" },
+  { degree: "Self-Taught Web Development", school: "Online Courses & Documentation", year: "2018 - Present" }
 ];
 
 export const ACHIEVEMENTS = [
-  { title: "Best UI Award 2023", org: "Awwwards" },
-  { title: "Hackathon Winner", org: "Global AI Hack" },
-  { title: "Open Source Hero", org: "GitHub" }
+  { title: "25+ Projects Completed", org: "Personal & Professional" },
+  { title: "3+ Years Experience", org: "Full Stack Development" },
+  { title: "50+ Happy Clients", org: "Successful Collaborations" },
+  { title: "4.9/5 Code Quality Rating", org: "Industry Standard" },
+  { title: "2000+ Development Hours", org: "Continuous Learning" },
+  { title: "15+ GitHub Repositories", org: "Open Source Contributions" },
+  { title: "8+ Technologies Mastered", org: "Modern Tech Stack" }
 ];
 
 export const UNIVERSES = [

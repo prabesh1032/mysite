@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Tooltip as RechartTooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar 
 } from 'recharts';
-import { Send, MapPin, Mail, Github, Linkedin, ExternalLink, X, GraduationCap, Trophy, Globe } from 'lucide-react';
+import { Send, MapPin, Mail, Github, Linkedin, ExternalLink, X, GraduationCap, Trophy, Globe, User, MessageSquare, CheckCircle, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import Starfield from './components/Starfield';
 import Navigation from './components/Navigation';
 import { portfolioData, SKILLS, PROJECTS, EXPERIENCE, EDUCATION, SERVICES, ACHIEVEMENTS, TESTIMONIALS } from './constants';
@@ -61,7 +62,7 @@ const HeroUniverse = () => (
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
         className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-neon-blue shadow-[0_0_30px_rgba(0,243,255,0.5)] mx-auto mb-6 overflow-hidden bg-black"
       >
-         <img src="https://picsum.photos/400/400?grayscale" alt="Avatar" className="w-full h-full object-cover opacity-80" />
+         <img src="/images/profile2.jpg" alt="Prabesh Acharya" className="w-full h-full object-cover" />
       </motion.div>
       
       <motion.h1 
@@ -113,9 +114,9 @@ const AboutUniverse = () => (
         </div>
         <div className="relative h-64 w-full bg-black/50 rounded-lg overflow-hidden border border-neon-purple/30 group">
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
-          <img src="https://picsum.photos/600/400?tech" alt="Coding" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+          <img src="/images/profile.jpg" alt="Prabesh Acharya" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
           <div className="absolute bottom-4 left-4 z-20">
-            <h3 className="text-xl font-bold font-orbitron text-white">System Online</h3>
+            <h3 className="text-xl font-bold font-orbitron text-white">Web Developer</h3>
             <p className="text-neon-pink text-xs">Access Granted</p>
           </div>
         </div>
@@ -196,45 +197,110 @@ const ProjectsUniverse = () => {
 
       <AnimatePresence>
         {selectedProject && (
-          <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <>
             <motion.div 
-              layoutId={`project-${selectedProject.id}`}
-              className="bg-gray-900 border border-neon-blue w-full max-w-2xl rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,243,255,0.2)]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-md" 
+              onClick={() => setSelectedProject(null)}
+              style={{ position: 'fixed' }}
+            />
+            <div 
+              className="z-[61] w-[90%] max-w-3xl"
+              style={{ 
+                position: 'fixed',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)'
+              }}
             >
-              <div className="relative h-64">
-                 <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-cover" />
-                 <button 
-                  onClick={(e) => { e.stopPropagation(); setSelectedProject(null); }}
-                  className="absolute top-4 right-4 bg-black/50 p-2 rounded-full hover:bg-red-500/50 transition-colors text-white"
-                 >
-                   <X size={20} />
-                 </button>
-              </div>
-              <div className="p-8">
-                <h2 className="text-3xl font-orbitron font-bold text-white mb-2">{selectedProject.title}</h2>
-                <p className="text-neon-pink font-mono mb-4">{selectedProject.category}</p>
-                <p className="text-gray-300 leading-relaxed mb-6 font-rajdhani text-lg">{selectedProject.description}</p>
-                
-                <div className="mb-6">
-                   <h4 className="text-sm text-gray-500 uppercase mb-2">Technologies</h4>
-                   <div className="flex flex-wrap gap-2">
-                    {selectedProject.tech.map(t => (
-                      <span key={t} className="text-xs bg-neon-blue/10 text-neon-blue px-3 py-1 rounded border border-neon-blue/30">{t}</span>
-                    ))}
-                   </div>
+              <motion.div 
+                initial={{ scale: 0.5, opacity: 0, rotateX: 45 }}
+                animate={{ scale: 1, opacity: 1, rotateX: 0 }}
+                exit={{ scale: 0.5, opacity: 0, rotateX: -45 }}
+                transition={{ type: "spring", damping: 20, stiffness: 200 }}
+                onClick={(e) => e.stopPropagation()}
+                className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-2 border-neon-blue rounded-3xl overflow-hidden shadow-[0_0_80px_rgba(0,243,255,0.4),inset_0_0_60px_rgba(0,243,255,0.1)] relative"
+                style={{ transformStyle: 'preserve-3d' }}
+              >
+                {/* Close Button */}
+                <button 
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-4 right-4 z-10 bg-red-500/20 hover:bg-red-500/40 p-3 rounded-full transition-all duration-300 text-white border border-red-500/50 hover:border-red-500 hover:scale-110 hover:rotate-90 shadow-lg"
+                >
+                  <X size={24} />
+                </button>
+
+                <div className="max-h-[85vh] overflow-y-auto custom-scrollbar">
+                  {/* Image Section */}
+                  <div className="relative h-72 overflow-hidden">
+                    <img 
+                      src={selectedProject.image} 
+                      alt={selectedProject.title} 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="p-8 space-y-6">
+                    {/* Title & Category */}
+                    <div>
+                      <h2 className="text-4xl font-orbitron font-bold text-white mb-3 drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
+                        {selectedProject.title}
+                      </h2>
+                      <div className="inline-block px-4 py-2 bg-neon-pink/20 border border-neon-pink rounded-full">
+                        <p className="text-neon-pink font-mono text-sm uppercase tracking-wider">{selectedProject.category}</p>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-gray-300 leading-relaxed text-lg font-rajdhani">
+                      {selectedProject.description}
+                    </p>
+                    
+                    {/* Technologies */}
+                    <div>
+                      <h4 className="text-sm text-neon-blue uppercase mb-3 font-bold tracking-wider flex items-center gap-2">
+                        <span className="w-8 h-0.5 bg-neon-blue"></span>
+                        Technologies Used
+                      </h4>
+                      <div className="flex flex-wrap gap-3">
+                        {selectedProject.tech.map((t, idx) => (
+                          <motion.span 
+                            key={t}
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: idx * 0.1 }}
+                            className="px-4 py-2 bg-neon-blue/10 text-neon-blue rounded-lg border border-neon-blue/30 hover:bg-neon-blue/20 hover:border-neon-blue transition-all text-sm font-semibold"
+                          >
+                            {t}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Action Button */}
+                    {selectedProject.github && (
+                      <div className="pt-4">
+                        <a 
+                          href={selectedProject.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-neon-blue to-neon-purple text-white rounded-xl font-bold hover:shadow-[0_0_30px_rgba(0,243,255,0.6)] transition-all duration-300 transform hover:scale-105 w-full"
+                        >
+                          <Github size={22} /> 
+                          <span>View Source Code</span>
+                          <ExternalLink size={18} />
+                        </a>
+                      </div>
+                    )}
+                  </div>
                 </div>
-                
-                <div className="flex gap-4">
-                   <button className="flex-1 bg-neon-blue hover:bg-cyan-400 text-black font-bold py-3 px-4 rounded transition-colors flex items-center justify-center gap-2">
-                     <ExternalLink size={18} /> Live Demo
-                   </button>
-                   <button className="flex-1 bg-transparent border border-gray-600 hover:border-white text-white py-3 px-4 rounded transition-colors flex items-center justify-center gap-2">
-                     <Github size={18} /> Source Code
-                   </button>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+              </motion.div>
+            </div>
+          </>
         )}
       </AnimatePresence>
     </div>
@@ -526,39 +592,257 @@ const AIChatbotUniverse = () => {
   );
 };
 
-const ContactUniverse = () => (
-  <div className="max-w-3xl mx-auto min-h-full flex flex-col justify-center text-center py-12 md:py-20">
-    <SectionHeading title="Final Gateway" subtitle="Establish Connection" />
-    <GlassPanel className="p-10 border-neon-pink/30 shadow-[0_0_40px_rgba(255,0,85,0.1)]">
-      <h3 className="text-2xl font-bold text-white mb-6">Ready to start a new mission?</h3>
-      <p className="text-gray-400 mb-8 max-w-lg mx-auto">
-        I am currently available for freelance projects and full-time opportunities across the multiverse.
-      </p>
+const ContactUniverse = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [notification, setNotification] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init("EWRGU8ISGhy2WRXNc");
+  }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const showNotification = (message: string, type: 'success' | 'error') => {
+    setNotification({ message, type });
+    setTimeout(() => setNotification(null), 5000);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      await emailjs.sendForm(
+        'service_e22emr5',
+        'template_11llwi8',
+        formRef.current!,
+        'EWRGU8ISGhy2WRXNc'
+      );
       
-      <div className="flex flex-col md:flex-row justify-center gap-6 mb-10">
-        <a href={`mailto:${portfolioData.email}`} className="flex items-center justify-center gap-3 px-8 py-4 bg-neon-blue text-black font-bold rounded-full hover:shadow-[0_0_20px_#00f3ff] transition-all">
-          <Mail size={20} /> Send Transmission
-        </a>
-      </div>
+      showNotification("Message sent successfully! I'll get back to you soon.", 'success');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      showNotification('Failed to send message. Please try again.', 'error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20 px-4">
+      <SectionHeading title="Final Gateway" subtitle="Establish Connection" />
       
-      <div className="flex justify-center gap-8">
-        {[
-          { icon: Github, href: "#", label: "GitHub" },
-          { icon: Linkedin, href: "#", label: "LinkedIn" },
-          { icon: Globe, href: "#", label: "Website" },
-        ].map((social, i) => (
-          <a 
-            key={i} 
-            href={social.href} 
-            className="text-gray-400 hover:text-white hover:scale-125 transition-transform duration-300 p-2"
+      {/* Notification */}
+      <AnimatePresence>
+        {notification && (
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            className="fixed top-4 left-1/2 transform -translate-x-1/2 z-[9999] max-w-md w-full mx-4"
           >
-            <social.icon size={28} />
-          </a>
-        ))}
+            <div className={`rounded-lg p-4 shadow-xl bg-glass-bg backdrop-blur-xl border-l-4 ${
+              notification.type === 'success' ? 'border-green-500' : 'border-red-500'
+            }`}>
+              <div className="flex items-start justify-between gap-2">
+                <p className={`font-semibold flex items-start text-sm ${
+                  notification.type === 'success' ? 'text-green-400' : 'text-red-400'
+                }`}>
+                  {notification.type === 'success' ? (
+                    <CheckCircle className="mr-3 flex-shrink-0 mt-0.5" size={20} />
+                  ) : (
+                    <AlertCircle className="mr-3 flex-shrink-0 mt-0.5" size={20} />
+                  )}
+                  <span>{notification.message}</span>
+                </p>
+                <button 
+                  onClick={() => setNotification(null)} 
+                  className="text-gray-400 hover:text-white flex-shrink-0"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* Contact Form */}
+        <GlassPanel className="p-8 border-neon-pink/30 shadow-[0_0_40px_rgba(255,0,85,0.1)]">
+          <h3 className="text-2xl font-bold text-white mb-6">Send Message</h3>
+          
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                Your Name
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <User className="text-gray-500" size={18} />
+                </div>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="pl-10 w-full p-3 bg-glass-bg border border-glass-border rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent transition text-white placeholder-gray-500"
+                  placeholder="John Doe"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                Email Address
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Mail className="text-gray-500" size={18} />
+                </div>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="pl-10 w-full p-3 bg-glass-bg border border-glass-border rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent transition text-white placeholder-gray-500"
+                  placeholder="your@email.com"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                Your Message
+              </label>
+              <div className="relative">
+                <div className="absolute top-3 left-0 pl-3 pointer-events-none">
+                  <MessageSquare className="text-gray-500" size={18} />
+                </div>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  rows={4}
+                  required
+                  className="pl-10 w-full p-3 bg-glass-bg border border-glass-border rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent transition resize-vertical text-white placeholder-gray-500"
+                  placeholder="Hello Prabesh, I would like to discuss..."
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-gradient-to-r from-neon-blue to-neon-purple text-white py-3 px-6 rounded-lg font-semibold hover:shadow-[0_0_20px_rgba(0,243,255,0.5)] transition duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? (
+                <>
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    className="mr-2"
+                  >
+                    <Send size={18} />
+                  </motion.div>
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Send size={18} className="mr-2" /> Send Message
+                </>
+              )}
+            </button>
+          </form>
+        </GlassPanel>
+
+        {/* Contact Info */}
+        <div className="space-y-6">
+          <GlassPanel className="p-8 border-neon-blue/30">
+            <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
+            
+            <div className="space-y-4">
+              <a 
+                href={`mailto:${portfolioData.email}`}
+                className="flex items-center gap-4 text-gray-300 hover:text-neon-blue transition-colors group"
+              >
+                <div className="p-3 bg-glass-bg rounded-lg group-hover:shadow-[0_0_15px_rgba(0,243,255,0.3)] transition">
+                  <Mail size={24} />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Email</p>
+                  <p className="font-medium">{portfolioData.email}</p>
+                </div>
+              </a>
+
+              <a 
+                href={`tel:${portfolioData.phone}`}
+                className="flex items-center gap-4 text-gray-300 hover:text-neon-blue transition-colors group"
+              >
+                <div className="p-3 bg-glass-bg rounded-lg group-hover:shadow-[0_0_15px_rgba(0,243,255,0.3)] transition">
+                  <Send size={24} />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Phone</p>
+                  <p className="font-medium">{portfolioData.phone}</p>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-4 text-gray-300">
+                <div className="p-3 bg-glass-bg rounded-lg">
+                  <MapPin size={24} />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Location</p>
+                  <p className="font-medium">{portfolioData.location}</p>
+                </div>
+              </div>
+            </div>
+          </GlassPanel>
+
+          <GlassPanel className="p-8 border-neon-purple/30">
+            <h3 className="text-xl font-bold text-white mb-4">Social Links</h3>
+            <div className="flex flex-wrap gap-4">
+              {[
+                { icon: Github, href: portfolioData.github, label: "GitHub" },
+                { icon: Linkedin, href: portfolioData.linkedin, label: "LinkedIn" },
+                { icon: Globe, href: portfolioData.github, label: "Portfolio" },
+              ].map((social, i) => (
+                <a 
+                  key={i} 
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-glass-bg border border-glass-border rounded-lg text-gray-300 hover:text-white hover:border-neon-blue hover:shadow-[0_0_15px_rgba(0,243,255,0.3)] transition-all"
+                >
+                  <social.icon size={20} />
+                  <span className="text-sm font-medium">{social.label}</span>
+                </a>
+              ))}
+            </div>
+          </GlassPanel>
+        </div>
       </div>
-    </GlassPanel>
-  </div>
-);
+    </div>
+  );
+};
 
 // --- Main App Component ---
 
