@@ -7,7 +7,7 @@ import { Send, MapPin, Mail, Github, Linkedin, ExternalLink, X, GraduationCap, T
 import emailjs from '@emailjs/browser';
 import Starfield from './components/Starfield';
 import Navigation from './components/Navigation';
-import { portfolioData, SKILLS, PROJECTS, EXPERIENCE, EDUCATION, SERVICES, ACHIEVEMENTS, TESTIMONIALS } from './constants';
+import { portfolioData, SKILLS, PROJECTS, EXPERIENCE, SERVICES, ACHIEVEMENTS, TESTIMONIALS } from './constants';
 import { sendMessageToGemini } from './services/geminiService';
 import { ChatMessage, ChatSender, Project } from './types';
 
@@ -258,31 +258,6 @@ const ExperienceUniverse = () => (
             <h3 className="text-xl font-bold text-white font-orbitron">{exp.role}</h3>
             <h4 className="text-lg text-gray-400 font-rajdhani mb-2">{exp.company}</h4>
             <p className="text-gray-300 text-sm">{exp.description}</p>
-          </GlassPanel>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-);
-
-const EducationUniverse = () => (
-  <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-    <SectionHeading title="Knowledge Sphere" subtitle="Academic Database" />
-    <div className="grid md:grid-cols-2 gap-6">
-      {EDUCATION.map((edu, idx) => (
-        <motion.div
-          key={idx}
-          initial={{ rotateX: 90, opacity: 0 }}
-          animate={{ rotateX: 0, opacity: 1 }}
-          transition={{ delay: idx * 0.2 }}
-        >
-          <GlassPanel className="p-8 text-center hover:border-neon-pink transition-colors">
-            <div className="w-16 h-16 mx-auto bg-gray-800 rounded-full flex items-center justify-center mb-4 text-neon-pink">
-              <GraduationCap size={32} />
-            </div>
-            <h3 className="text-xl font-bold text-white font-orbitron mb-1">{edu.degree}</h3>
-            <p className="text-neon-blue font-rajdhani text-lg">{edu.school}</p>
-            <p className="text-gray-500 mt-2 font-mono">{edu.year}</p>
           </GlassPanel>
         </motion.div>
       ))}

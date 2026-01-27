@@ -230,11 +230,6 @@ export const TESTIMONIALS: Testimonial[] = [
   { id: 3, name: "Arjun Bhusal", role: "Back-End Developer", text: "Prabesh has strong problem-solving skills and writes clean, maintainable code. A valuable team member.", avatar: "/images/testinomials/arjun.jpg" }
 ];
 
-export const EDUCATION = [
-  { degree: "Bachelor's in Information Management", school: "Lumbini ICT Campus", year: "2022 - Present" },
-  { degree: "Self-Taught Web Development", school: "Online Courses & Documentation", year: "2018 - Present" }
-];
-
 export const ACHIEVEMENTS = [
   { title: "25+ Projects Completed", org: "Personal & Professional" },
   { title: "3+ Years Experience", org: "Full Stack Development" },
@@ -251,7 +246,6 @@ export const UNIVERSES = [
   { id: 'skills', name: 'Ability Core', icon: Zap },
   { id: 'projects', name: 'Creation Realm', icon: Layers },
   { id: 'experience', name: 'Time Shard', icon: Clock },
-  { id: 'education', name: 'Knowledge Sphere', icon: GraduationCap },
   { id: 'services', name: 'Service Sector', icon: Cpu },
   { id: 'achievements', name: 'Trophy Cluster', icon: Trophy },
   { id: 'testimonials', name: 'Voice Realm', icon: MessageSquare },
