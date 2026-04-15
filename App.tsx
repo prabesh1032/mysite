@@ -62,7 +62,7 @@ const HeroUniverse = () => (
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
         className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-neon-blue shadow-[0_0_30px_rgba(0,243,255,0.5)] mx-auto mb-6 overflow-hidden bg-black"
       >
-         <img src="/images/profile2.jpg" alt="Prabesh Acharya" className="w-full h-full object-cover" />
+         <img src="/images/profile2.png" alt="Prabesh Acharya" className="w-full h-full object-cover" />
       </motion.div>
       
       <motion.h1 
