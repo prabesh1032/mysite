@@ -14,7 +14,9 @@ export const portfolioData = {
   github: "https://github.com/prabesh1032",
   linkedin: "https://www.linkedin.com/in/prabesh-acharya-8547a2321/",
   instagram: "https://www.instagram.com/prabesh_ach/",
-  twitter: "https://x.com/PrabeshAch33319"
+  twitter: "https://x.com/PrabeshAch33319",
+  facebook: "https://www.facebook.com/pravesh.ach/",
+  portfolio: ""
 };
 
 export const SKILLS = [
@@ -43,8 +45,8 @@ export const PROJECTS = [
     title: "The Ink Light",
     category: "Blog & Content Platform",
     description: "A modern MERN stack blog platform designed for publishing and managing articles with a clean and responsive user interface. Features include dynamic blog management, category-based content organization, responsive layouts, and smooth user experience for readers across all devices.",
-    tech: ["MongoDB", "Express.js", "React.js", "Node.js", "Tailwind CSS"],
-    image: "/images/theinklight/theinklight.png",
+    tech: [ "React.js", "Tailwind CSS","Express.js", "PostgreSQL"],
+    image: "/images/theinklight/inklight.png",
     github: "https://github.com/prabesh1032",
     live: "https://theinklight-frontend.onrender.com/"
   },
@@ -73,7 +75,7 @@ export const PROJECTS = [
     title: "Chethna",
     category: "E-Commerce",
     description: "Advanced e-commerce platform designed to revolutionize online shopping for grocery and general merchandise. Features intelligent product categorization, secure checkout, order tracking, personalized recommendations, and comprehensive admin dashboard.",
-    tech: ["Laravel", "MySQL", "JavaScript", "Bootstrap"],
+    tech: ["Laravel", "MySQL", "JavaScript", "Tailwind CSS"],
     image: "/images/chethna/ecommerce.jpg",
     github: "https://github.com/Amansolta/chetana"
   },
@@ -100,7 +102,7 @@ export const PROJECTS = [
     title: "Seti-Style",
     category: "E-Commerce",
     description: "Modern e-commerce platform dedicated to fashion and apparel with curated collection of trendy clothing. Features secure checkout, real-time inventory tracking, size recommendation engine, personalized suggestions, and customer testimonials.",
-    tech: ["PHP", "MySQL", "Bootstrap", "JavaScript"],
+    tech: ["PHP", "SQLite", "Tailwind CSS", "JavaScript"],
     image: "/images/setistyle/e-commerce.png",
     github: "https://github.com/prabesh1032/Myfirstproject"
   },
@@ -109,7 +111,7 @@ export const PROJECTS = [
     title: "FoodCircle",
     category: "Social Platform",
     description: "Vibrant social platform for food enthusiasts and culinary creators. Share recipes, food blogs, cooking tips, and culinary stories with comprehensive recipe database, community forums, chef profiles, and restaurant reviews.",
-    tech: ["Laravel", "JavaScript", "Tailwind CSS", "MySQL"],
+    tech: ["Laravel", "JavaScript", "Tailwind CSS", ],
     image: "/images/foodcircle/foodcircle.jpg",
     github: "https://github.com/prabesh1032/Food-Circle"
   },
@@ -127,7 +129,7 @@ export const PROJECTS = [
     title: "Ankur Nepal",
     category: "Non-Profit",
     description: "Ankur Nepal is a dedicated non-profit organization committed to child welfare and community development. The website showcases ongoing projects, fundraising campaigns, volunteer opportunities, and impact stories with donation system and transparent financial reporting.",
-    tech: ["Laravel", "MySQL", "Bootstrap", "JavaScript"],
+    tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
     image: "/images/Ankur nepal/Ankurnepal.jpg",
     github: "https://github.com/prabesh1032/ankur-nepal"
   },
@@ -137,7 +139,7 @@ export const PROJECTS = [
     title: "Landing Page",
     category: "Web Design",
     description: "Creative and modern landing page template designed for startups, products, and services. Features hero sections, feature highlights, testimonials, pricing tables, newsletter subscription, and responsive design optimized for conversions.",
-    tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+    tech: ["React", "Tailwind CSS", "JavaScript",],
     image: "/images/landing page/landing1.png",
     github: "https://github.com/prabesh1032/landing-page"
   }
@@ -146,31 +148,38 @@ export const PROJECTS = [
 export const EXPERIENCE = [
   {
     id: 1,
-    role: "Self-Taught Developer Journey",
-    company: "Personal Learning",
-    period: "2020 - Present",
-    description: "Learned web development through online courses, documentation, and consistent practice. Built hands-on experience with Laravel, modern JavaScript, and UI/UX principles by working on real-world challenges."
+    role: "Web Developer",
+    company: "Bitmap IT Solution Pvt Ltd",
+    period: "2024 - 2025",
+    description:
+      "Developed scalable web applications using Laravel, React.js, PHP, and MySQL. Built reusable frontend components, integrated REST APIs, improved application performance, and created responsive modern user interfaces."
   },
+
   {
     id: 2,
-    role: "Bachelor's in Information Management",
-    company: "Lumbini ICT Campus",
-    period: "2022 - Present",
-    description: "Comprehensive program covering web technologies, database management, software engineering, and IT project management with hands-on practical experience."
+    role: "Full Stack Developer",
+    company: "Freelance & Personal Projects",
+    period: "2023 - Present",
+    description:
+      "Built and deployed full-stack web applications including educational platforms, business websites, and modern frontend systems using Laravel, React.js, Tailwind CSS, and REST APIs."
   },
+
   {
     id: 3,
-    role: "Certifications & Workshops",
-    company: "Various Organizations",
-    period: "2022 - Present",
-    description: "Completed certifications in web development, participated in coding workshops and hackathons, and continuously sharpened skills through community engagement and practical learning."
+    role: "Bachelor in Information Management",
+    company: "Tribhuvan University",
+    period: "2021 - 2026",
+    description:
+      "Studying web technologies, database systems, software engineering, networking, and project management with practical development experience."
   },
+
   {
     id: 4,
-    role: "Internship – Web Development",
-    company: "BITS (Bitmat IT Solution)",
-    period: "2024",
-    description: "Gained real-world experience working on production-level projects in a collaborative environment. Focused on backend logic, frontend integration, and understanding client-driven development processes."
+    role: "Self-Learning & Skill Development",
+    company: "Continuous Learning",
+    period: "2020 - Present",
+    description:
+      "Continuously improving skills in modern web development, UI/UX design, frontend technologies, backend systems, and scalable application architecture through hands-on projects and real-world development."
   }
 ];
 
@@ -220,13 +229,19 @@ export const TESTIMONIALS = [
 ];
 
 export const ACHIEVEMENTS = [
-  { title: "25+ Projects Completed", org: "Personal & Professional" },
-  { title: "3+ Years Experience", org: "Full Stack Development" },
-  { title: "50+ Happy Clients", org: "Successful Collaborations" },
-  { title: "4.9/5 Code Quality Rating", org: "Industry Standard" },
-  { title: "2000+ Development Hours", org: "Continuous Learning" },
-  { title: "15+ GitHub Repositories", org: "Open Source Contributions" },
-  { title: "8+ Technologies Mastered", org: "Modern Tech Stack" }
+  { title: "10+ Web Projects Built", org: "Full Stack Development" },
+
+  { title: "1+ Year Professional Experience", org: "Bitmap IT Solution Pvt Ltd" },
+
+  { title: "Modern Full Stack Applications", org: "Laravel & React.js" },
+
+  { title: "REST API Integration Experience", org: "Backend Development" },
+
+  { title: "Responsive UI/UX Development", org: "Modern Frontend Design" },
+
+  { title: "Git & GitHub Workflow", org: "Version Control & Collaboration" },
+
+  { title: "Continuous Learning Journey", org: "Web Technologies & Development" }
 ];
 
 export const UNIVERSES = [
@@ -238,7 +253,6 @@ export const UNIVERSES = [
   { id: 'services', name: 'Services', icon: Cpu },
   { id: 'achievements', name: 'Achievements', icon: Trophy },
   { id: 'testimonials', name: 'Testimonials', icon: MessageSquare },
-  { id: 'stats', name: 'Stats', icon: BarChart2 },
   { id: 'ai', name: 'AI Assistant', icon: Bot },
   { id: 'contact', name: 'Contact', icon: Mail },
 ];

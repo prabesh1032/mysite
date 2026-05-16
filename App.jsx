@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Tooltip as RechartTooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar 
 } from 'recharts';
-import { Send, MapPin, Mail, Github, Linkedin, ExternalLink, X, GraduationCap, Trophy, Globe, User, MessageSquare, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, MapPin, Mail, Github, Linkedin, ExternalLink, X, GraduationCap, Trophy, Globe, User, MessageSquare, CheckCircle, AlertCircle, Twitter, Facebook, Instagram } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import Starfield from './components/Starfield';
 import Navigation from './components/Navigation';
@@ -344,82 +344,6 @@ const TestimonialsUniverse = () => (
      </div>
   </div>
 );
-
-const StatsUniverse = () => {
-  const data = SKILLS.map(s => ({ subject: s.name, A: s.level, fullMark: 100 }));
-
-  return (
-    <div className="max-w-6xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-<SectionHeading title="Statistics" subtitle="Performance Overview" />      
-      <GlassPanel className="p-6">
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="h-[400px] flex items-center justify-center">
-            <ResponsiveContainer width="100%" height="100%">
-              <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
-                <PolarGrid stroke="#333" />
-                <PolarAngleAxis dataKey="subject" tick={{ fill: '#9ca3af', fontSize: 10 }} />
-                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                <Radar name="Skills" dataKey="A" stroke="#00f3ff" fill="#00f3ff" fillOpacity={0.3} />
-                <RechartTooltip 
-                  contentStyle={{ backgroundColor: '#000', borderColor: '#333' }}
-                  itemStyle={{ color: '#00f3ff' }} 
-                />
-              </RadarChart>
-            </ResponsiveContainer>
-          </div>
-          
-          <div className="flex flex-col justify-center space-y-6">
-            <div>
-              <h3 className="text-2xl font-orbitron font-bold text-neon-blue mb-4">
-                Technical Proficiency
-              </h3>
-              <p className="text-gray-400 leading-relaxed mb-6">
-                My skill set spans across modern web technologies, with expertise in both frontend and backend development. Constantly learning and adapting to new technologies.
-              </p>
-            </div>
-            
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 rounded-full bg-neon-blue animate-pulse" />
-                <span className="text-gray-300 text-sm">Full-Stack Development</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 rounded-full bg-neon-purple animate-pulse delay-75" />
-                <span className="text-gray-300 text-sm">Modern JavaScript Frameworks</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 rounded-full bg-neon-pink animate-pulse delay-150" />
-                <span className="text-gray-300 text-sm">Database Design & Optimization</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse delay-200" />
-                <span className="text-gray-300 text-sm">Responsive & Accessible Design</span>
-              </div>
-            </div>
-
-            <div className="pt-4 border-t border-gray-800">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-400 font-mono">Overall Performance</span>
-                <span className="text-neon-blue font-bold font-mono">95%</span>
-              </div>
-              <div className="w-full bg-gray-800 h-3 rounded-full overflow-hidden relative">
-                <motion.div 
-                  initial={{ width: 0 }}
-                  animate={{ width: "95%" }}
-                  transition={{ duration: 2, delay: 0.5 }}
-                  className="h-full bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink relative"
-                >
-                  <div className="absolute inset-0 bg-white/20 animate-pulse" />
-                </motion.div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </GlassPanel>
-    </div>
-  );
-};
-
 const AIChatbotUniverse = () => {
   const [messages, setMessages] = useState([
     { id: '1', text: "Greetings, Traveler. I am Nexus AI. Ask me about the developer's skills, experience, or origin.", sender: ChatSender.AI, timestamp: new Date() }
@@ -629,7 +553,7 @@ const ContactUniverse = () => {
                   onChange={handleInputChange}
                   required
                   className="pl-10 w-full p-3 bg-glass-bg border border-glass-border rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent transition text-white placeholder-gray-500"
-                  placeholder="John Doe"
+                  placeholder="your name...."
                 />
               </div>
             </div>
@@ -751,7 +675,9 @@ const ContactUniverse = () => {
               {[
                 { icon: Github, href: portfolioData.github, label: "GitHub" },
                 { icon: Linkedin, href: portfolioData.linkedin, label: "LinkedIn" },
-                { icon: Globe, href: portfolioData.github, label: "Portfolio" },
+                { icon: Twitter, href: portfolioData.twitter, label: "Twitter" },
+                { icon: Facebook, href: portfolioData.facebook, label: "Facebook" },
+                { icon: Instagram, href: portfolioData.instagram, label: "Instagram" },
               ].map((social, i) => (
                 <a 
                   key={i} 
