@@ -550,10 +550,15 @@ const ContactUniverse = () => {
     setIsSubmitting(true);
 
     try {
+      const formElement = formRef.current;
+      if (!formElement) {
+        throw new Error('Contact form is not ready');
+      }
+
       await emailjs.sendForm(
         'service_e22emr5',
         'template_11llwi8',
-        formRef.current!,
+        formElement,
         'EWRGU8ISGhy2WRXNc'
       );
       
