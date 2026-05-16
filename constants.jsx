@@ -1,5 +1,5 @@
-import { 
-  Globe, User, Cpu, Layers, Clock, GraduationCap, 
+import {
+  Globe, User, Cpu, Layers, Clock, GraduationCap,
   Zap, Trophy, MessageSquare, BarChart2, Bot, Mail
 } from 'lucide-react';
 
@@ -18,28 +18,38 @@ export const portfolioData = {
 };
 
 export const SKILLS = [
-  // Frontend Skills
-  { name: "HTML5 & CSS3", level: 95, category: "Frontend" },
-  { name: "JavaScript ES6+", level: 90, category: "Frontend" },
+  // Frontend
+  { name: "JavaScript", level: 88, category: "Frontend" },
+  { name: "React.js", level: 82, category: "Frontend" },
   { name: "Tailwind CSS", level: 92, category: "Frontend" },
-  { name: "Responsive Design", level: 88, category: "Frontend" },
-  { name: "React", level: 75, category: "Frontend" },
-  
-  // Backend Skills
-  { name: "Laravel (PHP)", level: 85, category: "Backend" },
-  { name: "Blade Templating", level: 80, category: "Backend" },
-  { name: "MySQL / SQLite", level: 78, category: "Backend" },
-  { name: "REST API", level: 82, category: "Backend" },
-  
-  // Tools & Platforms
+  { name: "Bootstrap", level: 85, category: "Frontend" },
+  { name: "Responsive Design", level: 90, category: "Frontend" },
+  { name: "Framer Motion", level: 75, category: "Frontend" },
+
+  // Backend
+  { name: "PHP", level: 88, category: "Backend" },
+  { name: "Laravel", level: 86, category: "Backend" },
+  { name: "REST APIs", level: 84, category: "Backend" },
+  { name: "MySQL", level: 82, category: "Backend" },
+
+  // Tools
   { name: "Git & GitHub", level: 85, category: "Tools" },
-  { name: "Vite", level: 80, category: "Tools" },
-  { name: "VS Code", level: 90, category: "Tools" },
+  { name: "Postman", level: 78, category: "Tools" },
 ];
 
 export const PROJECTS = [
   {
-    id: 1,
+    id: 0,
+    title: "The Ink Light",
+    category: "Blog & Content Platform",
+    description: "A modern MERN stack blog platform designed for publishing and managing articles with a clean and responsive user interface. Features include dynamic blog management, category-based content organization, responsive layouts, and smooth user experience for readers across all devices.",
+    tech: ["MongoDB", "Express.js", "React.js", "Node.js", "Tailwind CSS"],
+    image: "/images/theinklight/theinklight.png",
+    github: "https://github.com/prabesh1032",
+    live: "https://theinklight-frontend.onrender.com/"
+  },
+  {
+    id: 2,
     title: "Connect for Study",
     category: "Education & Migration",
     description: "Connect Australian Education and Visa Services is your trusted partner for studying and immigrating to Australia. Comprehensive education and migration consulting services with personalized guidance for international students. Services include course selection, visa documentation, interview preparation, and post-arrival orientation.",
@@ -49,7 +59,7 @@ export const PROJECTS = [
     live: "https://connectforstudy.com.au/"
   },
   {
-    id: 2,
+    id: 3,
     title: "Smart Hand Cleaning Services",
     category: "Service Platform",
     description: "Professional platform offering comprehensive cleaning and sanitation solutions for residential and commercial properties. Features service packages, pricing transparency, booking system, real-time confirmation, and customer loyalty programs with verified professional cleaners.",
@@ -59,7 +69,7 @@ export const PROJECTS = [
     live: "http://smarthandscleaningservices.com.au/"
   },
   {
-    id: 3,
+    id: 4,
     title: "Chethna",
     category: "E-Commerce",
     description: "Advanced e-commerce platform designed to revolutionize online shopping for grocery and general merchandise. Features intelligent product categorization, secure checkout, order tracking, personalized recommendations, and comprehensive admin dashboard.",
@@ -68,7 +78,7 @@ export const PROJECTS = [
     github: "https://github.com/Amansolta/chetana"
   },
   {
-    id: 4,
+    id: 5,
     title: "YatraSathi",
     category: "Travel & Tourism",
     description: "Comprehensive travel and adventure platform for modern travel enthusiasts. Features curated destinations, customized travel packages, interactive maps, real-time availability, dynamic package customization, user reviews, and secure booking with multiple payment options.",
@@ -77,7 +87,7 @@ export const PROJECTS = [
     github: "https://github.com/prabesh1032/YatraSathi"
   },
   {
-    id: 5,
+    id: 6,
     title: "Task Management",
     category: "Productivity",
     description: "Robust and user-friendly application designed to streamline task organization and progress tracking. Features task creation, editing, deletion with form validation, user dashboard, status tracking, and role-based access control system.",
@@ -86,7 +96,7 @@ export const PROJECTS = [
     github: "https://github.com/prabesh1032/Task-management"
   },
   {
-    id: 6,
+    id: 7,
     title: "Seti-Style",
     category: "E-Commerce",
     description: "Modern e-commerce platform dedicated to fashion and apparel with curated collection of trendy clothing. Features secure checkout, real-time inventory tracking, size recommendation engine, personalized suggestions, and customer testimonials.",
@@ -95,7 +105,7 @@ export const PROJECTS = [
     github: "https://github.com/prabesh1032/Myfirstproject"
   },
   {
-    id: 7,
+    id: 8,
     title: "FoodCircle",
     category: "Social Platform",
     description: "Vibrant social platform for food enthusiasts and culinary creators. Share recipes, food blogs, cooking tips, and culinary stories with comprehensive recipe database, community forums, chef profiles, and restaurant reviews.",
@@ -104,7 +114,7 @@ export const PROJECTS = [
     github: "https://github.com/prabesh1032/Food-Circle"
   },
   {
-    id: 8,
+    id: 9,
     title: "Lumbini ICT Campus",
     category: "Educational",
     description: "Comprehensive digital platform showcasing institutional academic excellence, modern facilities, and vibrant student community. Features academic programs, faculty profiles, student resources, event management, alumni network, and virtual campus tours.",
@@ -113,7 +123,7 @@ export const PROJECTS = [
     github: "https://github.com/Amansolta/lict"
   },
   {
-    id: 9,
+    id: 10,
     title: "Ankur Nepal",
     category: "Non-Profit",
     description: "Ankur Nepal is a dedicated non-profit organization committed to child welfare and community development. The website showcases ongoing projects, fundraising campaigns, volunteer opportunities, and impact stories with donation system and transparent financial reporting.",
@@ -121,35 +131,9 @@ export const PROJECTS = [
     image: "/images/Ankur nepal/Ankurnepal.jpg",
     github: "https://github.com/prabesh1032/ankur-nepal"
   },
-  {
-    id: 10,
-    title: "Optical House",
-    category: "E-Commerce",
-    description: "Optical House is a premium eyewear e-commerce platform offering designer glasses, sunglasses, and contact lenses. Features virtual try-on, prescription management, home delivery, eye care tips, and expert consultation booking system.",
-    tech: ["Laravel", "MySQL", "JavaScript", "Tailwind CSS"],
-    image: "/images/optical house/glasses.jpeg",
-    github: "https://github.com/prabesh1032/optical-house"
-  },
+
   {
     id: 11,
-    title: "Opera Education",
-    category: "Educational",
-    description: "Opera Education is an innovative online learning platform offering courses, tutorials, and educational resources. Features course enrollment, progress tracking, certificate generation, interactive quizzes, instructor dashboard, and student performance analytics.",
-    tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
-    image: "/images/opera/Opera Logo.png",
-    github: "https://github.com/prabesh1032/opera-education"
-  },
-  {
-    id: 12,
-    title: "Portfolio Website",
-    category: "Personal",
-    description: "Modern, responsive personal portfolio website showcasing projects, skills, and professional experience. Features smooth animations, interactive UI elements, project galleries, contact form, and optimized performance.",
-    tech: ["HTML5", "CSS3", "JavaScript", "Tailwind CSS"],
-    image: "/images/portfolio/cooder.png",
-    github: "https://github.com/prabesh1032/Portfolio"
-  },
-  {
-    id: 13,
     title: "Landing Page",
     category: "Web Design",
     description: "Creative and modern landing page template designed for startups, products, and services. Features hero sections, feature highlights, testimonials, pricing tables, newsletter subscription, and responsive design optimized for conversions.",
@@ -191,34 +175,34 @@ export const EXPERIENCE = [
 ];
 
 export const SERVICES = [
-  { 
-    title: "Web Development", 
-    icon: "Globe", 
+  {
+    title: "Web Development",
+    icon: "Globe",
     description: "Full-stack web applications with modern frameworks like Laravel and responsive design that scales beautifully. Tech: Laravel, JavaScript, PHP"
   },
-  { 
-    title: "E-Commerce Solutions", 
-    icon: "Layers", 
+  {
+    title: "E-Commerce Solutions",
+    icon: "Layers",
     description: "Complete online stores with payment integration, inventory management, and powerful admin panels. Tech: Payment Gateway, Cart System, Admin Panel"
   },
-  { 
-    title: "API Development", 
-    icon: "Cpu", 
+  {
+    title: "API Development",
+    icon: "Cpu",
     description: "RESTful APIs and robust backend services for mobile apps and web applications. Tech: REST API, JSON, Authentication"
   },
-  { 
-    title: "Database Design", 
-    icon: "Globe", 
+  {
+    title: "Database Design",
+    icon: "Globe",
     description: "Efficient database architecture and optimization for lightning-fast performance. Tech: MySQL, Optimization, Indexing"
   },
-  { 
-    title: "UI/UX Implementation", 
-    icon: "Layers", 
+  {
+    title: "UI/UX Implementation",
+    icon: "Layers",
     description: "Beautiful, intuitive interfaces built with Tailwind CSS and modern design principles that enhance user experience."
   },
-  { 
-    title: "Maintenance & Support", 
-    icon: "Cpu", 
+  {
+    title: "Maintenance & Support",
+    icon: "Cpu",
     description: "Ongoing support, bug fixes, updates, and performance optimization to keep your website running smoothly and securely."
   }
 ];
