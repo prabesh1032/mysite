@@ -7,9 +7,9 @@ export const portfolioData = {
   name: "Prabesh Acharya",
   role: "Web Developer",
   tagline: "Building clean, functional, and user-friendly web experiences.",
-  about: "A dedicated web developer with a strong passion for building clean, functional, and user-friendly web experiences. With a Bachelor's degree in Information Management from Lumbini ICT Campus, I specialize in Laravel and JavaScript, and enjoy bringing ideas to life through efficient backend logic and responsive frontend design using TailwindCSS. I focus on writing thoughtful, maintainable code and crafting digital solutions that are both technically sound and intuitive for users.",
+  about: "Passionate  Web Developer with experience in Laravel, React.js, and modern frontend technologies. Skilled in building responsive web applications, REST API integrations, and scalable backend systems with clean UI, optimized performance, and user-focused design. Experienced in developing dynamic admin dashboards, reusable frontend components, and modern web solutions that deliver smooth and efficient user experiences.",
   location: "Nepal",
-  email: "prabesh11100@gmail.com",
+  email: "praveshach1032@gmail.com",
   phone: "+977 9812965110",
   github: "https://github.com/prabesh1032",
   linkedin: "https://www.linkedin.com/in/prabesh-acharya-8547a2321/",
@@ -176,34 +176,40 @@ export const EXPERIENCE = [
 
 export const SERVICES = [
   {
-    title: "Web Development",
-    icon: "Globe",
-    description: "Full-stack web applications with modern frameworks like Laravel and responsive design that scales beautifully. Tech: Laravel, JavaScript, PHP"
+    title: "Full Stack Web Development",
+    icon: Globe,
+    description:
+      "Building responsive and scalable web applications using Laravel, React.js, PHP, and modern frontend technologies."
   },
   {
-    title: "E-Commerce Solutions",
-    icon: "Layers",
-    description: "Complete online stores with payment integration, inventory management, and powerful admin panels. Tech: Payment Gateway, Cart System, Admin Panel"
+    title: "Frontend Development",
+    icon: Layers,
+    description:
+      "Creating modern, responsive, and user-friendly interfaces with React.js, Tailwind CSS, and JavaScript."
   },
   {
-    title: "API Development",
-    icon: "Cpu",
-    description: "RESTful APIs and robust backend services for mobile apps and web applications. Tech: REST API, JSON, Authentication"
+    title: "Backend Development",
+    icon: Cpu,
+    description:
+      "Developing secure backend systems, REST APIs, authentication, and dynamic functionalities using Laravel and PHP."
   },
   {
-    title: "Database Design",
-    icon: "Globe",
-    description: "Efficient database architecture and optimization for lightning-fast performance. Tech: MySQL, Optimization, Indexing"
+    title: "REST API Integration",
+    icon: Globe,
+    description:
+      "Integrating third-party APIs and building efficient RESTful services for seamless data communication."
   },
   {
-    title: "UI/UX Implementation",
-    icon: "Layers",
-    description: "Beautiful, intuitive interfaces built with Tailwind CSS and modern design principles that enhance user experience."
+    title: "Admin Dashboard Systems",
+    icon: Layers,
+    description:
+      "Building dynamic admin panels with content management, analytics, and user management functionalities."
   },
   {
-    title: "Maintenance & Support",
-    icon: "Cpu",
-    description: "Ongoing support, bug fixes, updates, and performance optimization to keep your website running smoothly and securely."
+    title: "Website Maintenance",
+    icon: Cpu,
+    description:
+      "Providing bug fixes, performance optimization, responsive improvements, and ongoing website support."
   }
 ];
 
@@ -224,15 +230,15 @@ export const ACHIEVEMENTS = [
 ];
 
 export const UNIVERSES = [
-  { id: 'hero', name: 'Origin Zone', icon: Globe },
-  { id: 'about', name: 'Identity Chamber', icon: User },
-  { id: 'skills', name: 'Ability Core', icon: Zap },
-  { id: 'projects', name: 'Creation Realm', icon: Layers },
-  { id: 'experience', name: 'Time Shard', icon: Clock },
-  { id: 'services', name: 'Service Sector', icon: Cpu },
-  { id: 'achievements', name: 'Trophy Cluster', icon: Trophy },
-  { id: 'testimonials', name: 'Voice Realm', icon: MessageSquare },
-  { id: 'stats', name: 'Stats Nebula', icon: BarChart2 },
-  { id: 'ai', name: 'AI Nexus', icon: Bot },
-  { id: 'contact', name: 'Final Gateway', icon: Mail },
+  { id: 'hero', name: 'Home', icon: Globe },
+  { id: 'about', name: 'About', icon: User },
+  { id: 'skills', name: 'Skills', icon: Zap },
+  { id: 'projects', name: 'Projects', icon: Layers },
+  { id: 'experience', name: 'Experience', icon: Clock },
+  { id: 'services', name: 'Services', icon: Cpu },
+  { id: 'achievements', name: 'Achievements', icon: Trophy },
+  { id: 'testimonials', name: 'Testimonials', icon: MessageSquare },
+  { id: 'stats', name: 'Stats', icon: BarChart2 },
+  { id: 'ai', name: 'AI Assistant', icon: Bot },
+  { id: 'contact', name: 'Contact', icon: Mail },
 ];

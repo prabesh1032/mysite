@@ -101,8 +101,7 @@ const HeroUniverse = () => (
 
 const AboutUniverse = () => (
   <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-    <SectionHeading title="Identity Chamber" subtitle="Who I Am" />
-    <GlassPanel className="p-8 md:p-12">
+<SectionHeading title="About Me" subtitle="Who I Am" />    <GlassPanel className="p-8 md:p-12">
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div>
           <p className="text-gray-300 font-rajdhani text-lg leading-relaxed mb-6">
@@ -132,8 +131,7 @@ const AboutUniverse = () => (
 
 const SkillsUniverse = () => (
   <div className="max-w-5xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-    <SectionHeading title="Ability Core" subtitle="Tech Stack" />
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<SectionHeading title="Skills" subtitle="Tech Stack" />    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {SKILLS.map((skill, idx) => (
         <motion.div
           key={idx}
@@ -165,7 +163,7 @@ const SkillsUniverse = () => (
 const ProjectsUniverse = () => {
   return (
     <div className="max-w-6xl mx-auto min-h-full flex flex-col justify-center relative py-12 md:py-20">
-      <SectionHeading title="Creation Realm" subtitle="Deployed Entities" />
+<SectionHeading title="Projects" subtitle="Featured Work" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {PROJECTS.map((project, idx) => (
           <motion.div
@@ -243,7 +241,7 @@ const ProjectsUniverse = () => {
 
 const ExperienceUniverse = () => (
   <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-    <SectionHeading title="Time Shard" subtitle="Experience Timeline" />
+<SectionHeading title="Experience" subtitle="Career Journey" />
     <div className="relative pl-8 border-l-2 border-gray-800 ml-4 md:ml-0">
       {EXPERIENCE.map((exp, idx) => (
         <motion.div 
@@ -272,7 +270,7 @@ const ExperienceUniverse = () => (
 
 const ServicesUniverse = () => (
   <div className="max-w-5xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-     <SectionHeading title="Service Sector" subtitle="Offerings" />
+<SectionHeading title="Services" subtitle="What I Offer" />
      <div className="grid md:grid-cols-3 gap-6">
         {SERVICES.map((s, i) => (
           <motion.div
@@ -283,7 +281,7 @@ const ServicesUniverse = () => (
             <GlassPanel className="p-6 h-full border-t-4 border-t-neon-blue">
                <div className="mb-4 text-neon-blue">
                  <div className="w-12 h-12 bg-neon-blue/10 rounded-lg flex items-center justify-center border border-neon-blue/30">
-                   <div className="w-2 h-2 bg-neon-blue rounded-full" />
+                   <s.icon size={22} />
                  </div>
                </div>
                <h3 className="text-xl font-bold text-white font-orbitron mb-3">{s.title}</h3>
@@ -297,7 +295,7 @@ const ServicesUniverse = () => (
 
 const AchievementsUniverse = () => (
   <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-    <SectionHeading title="Trophy Cluster" subtitle="Recognitions" />
+<SectionHeading title="Achievements" subtitle="Milestones & Recognition" />
     <div className="grid gap-4">
       {ACHIEVEMENTS.map((ach, i) => (
         <motion.div 
@@ -321,7 +319,7 @@ const AchievementsUniverse = () => (
 
 const TestimonialsUniverse = () => (
   <div className="max-w-5xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-     <SectionHeading title="Voice Realm" subtitle="Transmissions" />
+     <SectionHeading title="Testimonials" subtitle="Feedback" />
      <div className="grid md:grid-cols-3 gap-6">
        {TESTIMONIALS.map((t, i) => (
          <motion.div 
@@ -352,8 +350,7 @@ const StatsUniverse = () => {
 
   return (
     <div className="max-w-6xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-      <SectionHeading title="Stats Nebula" subtitle="Data Visualization" />
-      
+<SectionHeading title="Statistics" subtitle="Performance Overview" />      
       <GlassPanel className="p-6">
         <div className="grid md:grid-cols-2 gap-8">
           <div className="h-[400px] flex items-center justify-center">
@@ -458,7 +455,7 @@ const AIChatbotUniverse = () => {
 
   return (
     <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-      <SectionHeading title="AI Nexus" subtitle="Neural Interface" />
+<SectionHeading title="AI Assistant" subtitle="Smart Interaction" />
       <GlassPanel className="h-[60vh] flex flex-col border-neon-blue/40 shadow-[0_0_30px_rgba(0,243,255,0.15)]">
         {/* Terminal Header */}
         <div className="bg-black/40 p-3 border-b border-white/10 flex items-center justify-between">
@@ -573,7 +570,7 @@ const ContactUniverse = () => {
 
   return (
     <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20 px-4 relative">
-      <SectionHeading title="Final Gateway" subtitle="Establish Connection" />
+      <SectionHeading title="Contact Me" subtitle="Get In Touch" />
       
       {/* Notification */}
       <AnimatePresence>
