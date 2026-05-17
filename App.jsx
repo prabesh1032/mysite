@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Tooltip as RechartTooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar
 } from 'recharts';
-import { Send, MapPin, Mail, Github, Linkedin, ExternalLink, X, GraduationCap, Trophy, Globe, User, MessageSquare, CheckCircle, AlertCircle, Twitter, Facebook, Instagram, Loader } from 'lucide-react';
+import { Send, MapPin, Mail, Github, Linkedin, ExternalLink, X, GraduationCap, Trophy, Globe, User, MessageSquare, CheckCircle, AlertCircle, Twitter, Facebook, Instagram, Loader, Download } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import Starfield from './components/Starfield';
 import Navigation from './components/Navigation';
@@ -108,6 +108,16 @@ const AboutUniverse = () => (
             <div className="flex items-center gap-2">
               <Mail size={16} /> {portfolioData.email}
             </div>
+          </div>
+          <div className="mt-6 ml-16">
+            <a
+              href="/resume/Prabesh-Acharya-Resume.pdf"
+              download
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-orbitron text-sm text-white bg-gradient-to-r from-neon-purple/90 to-neon-pink/90 border border-neon-purple/40 shadow-[0_0_20px_rgba(188,19,254,0.25)] hover:shadow-[0_0_28px_rgba(255,46,99,0.35)] hover:from-neon-purple hover:to-neon-pink transition"
+            >
+              <Download size={16} />
+              Download Resume
+            </a>
           </div>
         </div>
         <div className="relative h-80 md:h-96 w-full bg-black/50 rounded-lg overflow-hidden border border-neon-purple/30 group">
