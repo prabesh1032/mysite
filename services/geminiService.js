@@ -1,6 +1,8 @@
 import { portfolioData } from "../constants";
 
-// Simple keyword-based chatbot responses
+const API_URL = import.meta.env.VITE_CHAT_API_URL || "/api/chat";
+
+// Simple keyword-based chatbot responses used as a safe fallback
 const responses = [
   {
     keywords: ["hello", "hi", "hey", "greetings", "howdy", "sup", "yo", "start", "good morning", "good afternoon", "good evening"],
@@ -84,9 +86,8 @@ const responses = [
   }
 ];
 
-export const sendMessageToGemini = async (message) => {
-  // Simulate a slight delay to make it feel natural
-  await new Promise(resolve => setTimeout(resolve, 500));
+const getLocalResponse = async (message) => {
+  await new Promise(resolve => setTimeout(resolve, 300));
   
   const lowerMessage = message.toLowerCase();
   
@@ -101,4 +102,35 @@ export const sendMessageToGemini = async (message) => {
   
   // Default response if no keyword matches
   return "Hmm, I'm not sure about that. Try asking me about Prabesh's skills, projects, experience, or how to contact him. I'm here to help you navigate his portfolio! 🌌";
+};
+
+export const sendMessageToGemini = async (message) => {
+  const trimmedMessage = message.trim();
+
+  if (!trimmedMessage) {
+    return "Please type a message first.";
+  }
+
+  try {
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message: trimmedMessage }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Chat API failed with status ${response.status}`);
+    }
+
+    const data = await response.json();
+    if (typeof data.response === 'string' && data.response.trim()) {
+      return data.response;
+    }
+
+    throw new Error('Chat API returned an empty response');
+  } catch (error) {
+    return getLocalResponse(trimmedMessage);
+  }
 };
