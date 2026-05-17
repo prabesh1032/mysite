@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Tooltip as RechartTooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar 
+import {
+  Tooltip as RechartTooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar
 } from 'recharts';
 import { Send, MapPin, Mail, Github, Linkedin, ExternalLink, X, GraduationCap, Trophy, Globe, User, MessageSquare, CheckCircle, AlertCircle, Twitter, Facebook, Instagram, Loader } from 'lucide-react';
 import emailjs from '@emailjs/browser';
@@ -21,14 +21,14 @@ const GlassPanel = ({ children, className = "" }) => (
 
 const SectionHeading = ({ title, subtitle }) => (
   <div className="mb-8 text-center">
-    <motion.h2 
+    <motion.h2
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       className="text-4xl md:text-5xl font-orbitron font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple drop-shadow-[0_0_10px_rgba(0,243,255,0.3)]"
     >
       {title}
     </motion.h2>
-    <motion.p 
+    <motion.p
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.2 }}
@@ -43,17 +43,17 @@ const SectionHeading = ({ title, subtitle }) => (
 
 const HeroUniverse = () => (
   <div className="flex flex-col items-center justify-center min-h-[calc(100vh-10rem)] text-center px-4 relative py-12">
-    <motion.div 
+    <motion.div
       animate={{ rotate: 360 }}
       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-      className="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] border border-neon-blue/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10" 
+      className="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] border border-neon-blue/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"
     />
-    <motion.div 
+    <motion.div
       animate={{ rotate: -360 }}
       transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-      className="absolute w-[280px] h-[280px] md:w-[460px] md:h-[460px] border border-neon-purple/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10" 
+      className="absolute w-[280px] h-[280px] md:w-[460px] md:h-[460px] border border-neon-purple/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"
     />
-    
+
     <div className="relative z-10">
       <motion.div
         initial={{ scale: 0 }}
@@ -63,16 +63,16 @@ const HeroUniverse = () => (
       >
          <img src="/images/profile2.png" alt="Prabesh Acharya" className="w-full h-full object-cover" />
       </motion.div>
-      
-      <motion.h1 
+
+      <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-5xl md:text-7xl font-orbitron font-black text-white mb-4 tracking-tighter"
       >
         {portfolioData.name.toUpperCase()}
       </motion.h1>
-      
-      <motion.div 
+
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
@@ -80,8 +80,8 @@ const HeroUniverse = () => (
       >
         {portfolioData.role}
       </motion.div>
-      
-      <motion.p 
+
+      <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
@@ -139,7 +139,7 @@ const SkillsUniverse = () => (
               <span className="text-neon-purple font-mono text-xs">{skill.level}%</span>
             </div>
             <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-              <motion.div 
+              <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${skill.level}%` }}
                 transition={{ duration: 1, delay: 0.5 }}
@@ -177,16 +177,16 @@ const ProjectsUniverse = () => {
                   </span>
                 </div>
               </div>
-              
+
               <div className="p-5 flex flex-col flex-grow">
                 <h3 className="text-xl font-bold font-orbitron text-white mb-3 group-hover:text-neon-blue transition-colors">
                   {project.title}
                 </h3>
-                
+
                 <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-grow line-clamp-3">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.slice(0, 4).map(t => (
                     <span key={t} className="text-[10px] bg-neon-blue/10 text-neon-blue px-2 py-1 rounded border border-neon-blue/30 font-medium">
@@ -199,10 +199,10 @@ const ProjectsUniverse = () => {
                     </span>
                   )}
                 </div>
-                
+
                 <div className="flex gap-3 mt-auto">
                   {project.github && (
-                    <a 
+                    <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -213,7 +213,7 @@ const ProjectsUniverse = () => {
                     </a>
                   )}
                   {project.live && (
-                    <a 
+                    <a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -238,7 +238,7 @@ const ExperienceUniverse = () => (
 <SectionHeading title="Experience" subtitle="Career Journey" />
     <div className="relative pl-8 border-l-2 border-gray-800 ml-4 md:ml-0">
       {EXPERIENCE.map((exp, idx) => (
-        <motion.div 
+        <motion.div
           key={exp.id}
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -292,7 +292,7 @@ const AchievementsUniverse = () => (
 <SectionHeading title="Achievements" subtitle="Milestones & Recognition" />
     <div className="grid gap-4">
       {ACHIEVEMENTS.map((ach, i) => (
-        <motion.div 
+        <motion.div
           key={i}
           initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -316,7 +316,7 @@ const TestimonialsUniverse = () => (
      <SectionHeading title="Testimonials" subtitle="Feedback" />
      <div className="grid md:grid-cols-3 gap-6">
        {TESTIMONIALS.map((t, i) => (
-         <motion.div 
+         <motion.div
           key={t.id}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -382,7 +382,7 @@ const ContactUniverse = () => {
         formElement,
         'EWRGU8ISGhy2WRXNc'
       );
-      
+
       showNotification("Message sent successfully! I'll get back to you soon.", 'success');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
@@ -395,7 +395,7 @@ const ContactUniverse = () => {
   return (
     <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20 px-4 relative">
       <SectionHeading title="Contact Me" subtitle="Get In Touch" />
-      
+
       {/* Notification */}
       <AnimatePresence>
         {notification && (
@@ -419,8 +419,8 @@ const ContactUniverse = () => {
                   )}
                   <span>{notification.message}</span>
                 </p>
-                <button 
-                  onClick={() => setNotification(null)} 
+                <button
+                  onClick={() => setNotification(null)}
                   className="text-gray-400 hover:text-white flex-shrink-0"
                 >
                   <X size={18} />
@@ -435,7 +435,7 @@ const ContactUniverse = () => {
         {/* Contact Form */}
         <GlassPanel className="p-8 border-neon-pink/30 shadow-[0_0_40px_rgba(255,0,85,0.1)]">
           <h3 className="text-2xl font-bold text-white mb-6">Send Message</h3>
-          
+
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
@@ -529,9 +529,9 @@ const ContactUniverse = () => {
         <div className="space-y-6">
           <GlassPanel className="p-8 border-neon-blue/30">
             <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
-            
+
             <div className="space-y-4">
-              <a 
+              <a
                 href={`mailto:${portfolioData.email}`}
                 className="flex items-center gap-4 text-gray-300 hover:text-neon-blue transition-colors group"
               >
@@ -544,7 +544,7 @@ const ContactUniverse = () => {
                 </div>
               </a>
 
-              <a 
+              <a
                 href={`tel:${portfolioData.phone}`}
                 className="flex items-center gap-4 text-gray-300 hover:text-neon-blue transition-colors group"
               >
@@ -579,8 +579,8 @@ const ContactUniverse = () => {
                 { icon: Facebook, href: portfolioData.facebook, label: "Facebook" },
                 { icon: Instagram, href: portfolioData.instagram, label: "Instagram" },
               ].map((social, i) => (
-                <a 
-                  key={i} 
+                <a
+                  key={i}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -611,15 +611,28 @@ const AIUniverse = () => {
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
-  const messagesEndRef = useRef(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const messagesContainerRef = useRef(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const container = messagesContainerRef.current;
+    if (!container) return;
+    container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
   };
 
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  const handleMessagesScroll = () => {
+    const container = messagesContainerRef.current;
+    if (!container) return;
+    setShowScrollTop(container.scrollTop > 120);
+  };
+
+  const scrollToTop = () => {
+    messagesContainerRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const SUGGESTED_PROMPTS = [
     'Tell me about Prabesh',
@@ -629,6 +642,50 @@ const AIUniverse = () => {
   ];
 
   const WORKER_URL = 'https://portfolio-ai.praveshach1032.workers.dev';
+
+  const renderMessageText = (text) => {
+    const lines = text.split('\n').map((line) => line.trimEnd());
+    const hasBullets = lines.some((line) => /^[-*•]\s+/.test(line));
+
+    if (!hasBullets) {
+      return <p className="text-sm leading-relaxed whitespace-pre-wrap">{text}</p>;
+    }
+
+    const elements = [];
+    let listItems = [];
+
+    const flushList = (key) => {
+      if (!listItems.length) return;
+      elements.push(
+        <ul key={`list-${key}`} className="list-disc list-inside text-sm leading-relaxed space-y-1">
+          {listItems.map((item, idx) => (
+            <li key={`item-${key}-${idx}`}>{item}</li>
+          ))}
+        </ul>
+      );
+      listItems = [];
+    };
+
+    lines.forEach((line, index) => {
+      const trimmed = line.trim();
+      if (!trimmed) return;
+      const match = trimmed.match(/^[-*•]\s+(.*)$/);
+      if (match) {
+        listItems.push(match[1]);
+      } else {
+        flushList(index);
+        elements.push(
+          <p key={`p-${index}`} className="text-sm leading-relaxed">
+            {trimmed}
+          </p>
+        );
+      }
+    });
+
+    flushList('end');
+
+    return <div className="space-y-2">{elements}</div>;
+  };
 
   const handleSendMessage = async (messageText = input) => {
     if (!messageText.trim()) return;
@@ -690,10 +747,24 @@ const AIUniverse = () => {
       {/* Chat Container */}
       <GlassPanel className="p-6 border-neon-blue/30 flex flex-col h-[600px]">
         {/* Messages Display */}
-        <div className="flex-1 overflow-y-auto mb-6 space-y-4 pr-4" style={{
+        <div
+          ref={messagesContainerRef}
+          onScroll={handleMessagesScroll}
+          className="relative flex-1 overflow-y-auto mb-6 space-y-4 pr-4"
+          style={{
           scrollbarWidth: 'thin',
           scrollbarColor: 'rgba(0, 243, 255, 0.3) transparent'
-        }}>
+          }}
+        >
+          {showScrollTop && (
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className="absolute top-2 right-2 px-3 py-1 text-xs rounded-full bg-glass-bg border border-glass-border text-gray-300 hover:text-neon-blue hover:border-neon-blue transition"
+            >
+              Top
+            </button>
+          )}
           {messages.map((msg) => (
             <motion.div
               key={msg.id}
@@ -708,7 +779,7 @@ const AIUniverse = () => {
                     : 'bg-glass-bg border border-glass-border text-gray-200'
                 }`}
               >
-                <p className="text-sm leading-relaxed">{msg.text}</p>
+                {renderMessageText(msg.text)}
               </div>
             </motion.div>
           ))}
@@ -721,7 +792,6 @@ const AIUniverse = () => {
               </div>
             </div>
           )}
-          <div ref={messagesEndRef} />
         </div>
 
         {/* Suggested Prompts */}
@@ -779,6 +849,14 @@ const App = () => {
     }
   }, [activeUniverse]);
 
+  const handleNavigate = (nextUniverse) => {
+    if (nextUniverse === activeUniverse) {
+      mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    setActiveUniverse(nextUniverse);
+  };
+
   // Map IDs to components
   const renderUniverse = () => {
     switch (activeUniverse) {
@@ -799,7 +877,7 @@ const App = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden text-white font-rajdhani bg-slate-950">
       <Starfield />
-      
+
       {/* Main Content Area with "Warp" Transition */}
       <main ref={mainRef} className="relative w-full h-full pb-32 pt-10 px-4 md:px-8 overflow-y-auto scroll-smooth">
         <AnimatePresence mode="wait">
@@ -817,8 +895,8 @@ const App = () => {
       </main>
 
       {/* Navigation Dock */}
-      <Navigation activeUniverse={activeUniverse} onNavigate={setActiveUniverse} />
-      
+      <Navigation activeUniverse={activeUniverse} onNavigate={handleNavigate} />
+
       {/* Overlay Vignette for atmosphere */}
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] z-40" />
     </div>

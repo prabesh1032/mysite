@@ -47,6 +47,12 @@ Projects:
 Experience:
 - Bitmap IT Solution Pvt Ltd
 
+Formatting rules:
+- Always respond using short bullet points.
+- Use headings with a trailing colon, then bullets under each heading.
+- Keep each bullet to one line.
+- Avoid long paragraphs.
+
 Keep responses professional, short, and clear.
 `;
 
