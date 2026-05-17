@@ -3,18 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Tooltip as RechartTooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar 
 } from 'recharts';
-import { Send, MapPin, Mail, Github, Linkedin, ExternalLink, X, GraduationCap, Trophy, Globe, User, MessageSquare, CheckCircle, AlertCircle, Twitter, Facebook, Instagram } from 'lucide-react';
+import { Send, MapPin, Mail, Github, Linkedin, ExternalLink, X, GraduationCap, Trophy, Globe, User, MessageSquare, CheckCircle, AlertCircle, Twitter, Facebook, Instagram, Loader } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import Starfield from './components/Starfield';
 import Navigation from './components/Navigation';
-import { portfolioData, SKILLS, PROJECTS, EXPERIENCE, SERVICES, ACHIEVEMENTS, TESTIMONIALS } from './constants';
-import { sendMessageToGemini } from './services/geminiService';
 
-const ChatSender = {
-  User: 'user',
-  AI: 'ai',
-  System: 'system',
-};
+import { portfolioData, SKILLS, PROJECTS, EXPERIENCE, SERVICES, ACHIEVEMENTS, TESTIMONIALS } from './constants';
 
 // --- Shared UI Components ---
 
@@ -344,100 +338,6 @@ const TestimonialsUniverse = () => (
      </div>
   </div>
 );
-const AIChatbotUniverse = () => {
-  const [messages, setMessages] = useState([
-    { id: '1', text: "Greetings, Traveler. I am Nexus AI. Ask me about the developer's skills, experience, or origin.", sender: ChatSender.AI, timestamp: new Date() }
-  ]);
-  const [input, setInput] = useState('');
-  const [loading, setLoading] = useState(false);
-  const scrollRef = useRef(null);
-
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [messages]);
-
-  const handleSend = async () => {
-    if (!input.trim()) return;
-    
-    const userMsg = { id: Date.now().toString(), text: input, sender: ChatSender.User, timestamp: new Date() };
-    setMessages(prev => [...prev, userMsg]);
-    setInput('');
-    setLoading(true);
-
-    try {
-      const responseText = await sendMessageToGemini(input);
-      const aiMsg = { id: (Date.now() + 1).toString(), text: responseText, sender: ChatSender.AI, timestamp: new Date() };
-      setMessages(prev => [...prev, aiMsg]);
-    } catch (e) {
-      // Error handled in service
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-<SectionHeading title="AI Assistant" subtitle="Smart Interaction" />
-      <GlassPanel className="h-[60vh] flex flex-col border-neon-blue/40 shadow-[0_0_30px_rgba(0,243,255,0.15)]">
-        {/* Terminal Header */}
-        <div className="bg-black/40 p-3 border-b border-white/10 flex items-center justify-between">
-          <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500/50" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-            <div className="w-3 h-3 rounded-full bg-green-500/50" />
-          </div>
-          <div className="text-xs font-mono text-neon-blue/70">NEXUS_CORE_V2.5</div>
-        </div>
-
-        {/* Chat Area */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-4" ref={scrollRef}>
-          {messages.map((msg) => (
-            <div key={msg.id} className={`flex ${msg.sender === ChatSender.User ? 'justify-end' : 'justify-start'}`}>
-              <div className={`max-w-[80%] p-3 rounded-lg border ${
-                msg.sender === ChatSender.User 
-                  ? 'bg-neon-blue/10 border-neon-blue/30 text-cyan-50 rounded-br-none' 
-                  : 'bg-neon-purple/10 border-neon-purple/30 text-fuchsia-50 rounded-bl-none'
-              }`}>
-                <div className="text-[10px] opacity-50 mb-1 font-mono uppercase">{msg.sender === ChatSender.User ? 'You' : 'Nexus AI'}</div>
-                <p className="text-sm leading-relaxed">{msg.text}</p>
-              </div>
-            </div>
-          ))}
-          {loading && (
-            <div className="flex justify-start">
-              <div className="bg-neon-purple/10 border border-neon-purple/30 p-3 rounded-lg rounded-bl-none flex gap-2 items-center">
-                <span className="w-2 h-2 bg-neon-purple rounded-full animate-bounce" />
-                <span className="w-2 h-2 bg-neon-purple rounded-full animate-bounce delay-75" />
-                <span className="w-2 h-2 bg-neon-purple rounded-full animate-bounce delay-150" />
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Input Area */}
-        <div className="p-4 bg-black/40 border-t border-white/10 flex gap-2">
-          <input 
-            type="text" 
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-            placeholder="Initialize query..." 
-            className="flex-1 bg-black/50 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-neon-blue font-mono"
-          />
-          <button 
-            onClick={handleSend}
-            disabled={loading}
-            className="bg-neon-blue/20 hover:bg-neon-blue/40 text-neon-blue border border-neon-blue/50 rounded-lg px-4 transition-colors disabled:opacity-50"
-          >
-            <Send size={20} />
-          </button>
-        </div>
-      </GlassPanel>
-    </div>
-  );
-};
 
 const ContactUniverse = () => {
   const [formData, setFormData] = useState({
@@ -698,6 +598,174 @@ const ContactUniverse = () => {
   );
 };
 
+// --- AI Assistant Universe ---
+
+const AIUniverse = () => {
+  const [messages, setMessages] = useState([
+    {
+      id: 1,
+      text: "Hey! 👋 I'm Prabesh's AI Assistant. Ask me anything about his skills, projects, experience, or services!",
+      sender: 'ai',
+      timestamp: new Date(),
+    },
+  ]);
+  const [input, setInput] = useState('');
+  const [loading, setLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const SUGGESTED_PROMPTS = [
+    'Tell me about Prabesh',
+    'What projects has he built?',
+    'What technologies does he use?',
+    'How can I contact him?',
+  ];
+
+  const WORKER_URL = 'https://portfolio-ai.praveshach1032.workers.dev';
+
+  const handleSendMessage = async (messageText = input) => {
+    if (!messageText.trim()) return;
+
+    const userMessage = {
+      id: Date.now(),
+      text: messageText,
+      sender: 'user',
+      timestamp: new Date(),
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setInput('');
+    setLoading(true);
+
+    try {
+      const response = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: messageText }),
+      });
+
+      if (!response.ok) throw new Error('Network response was not ok');
+      const data = await response.json();
+
+      const aiMessage = {
+        id: Date.now() + 1,
+        text: data.reply || "Sorry, I couldn't process that. Please try again.",
+        sender: 'ai',
+        timestamp: new Date(),
+      };
+
+      setMessages((prev) => [...prev, aiMessage]);
+    } catch (error) {
+      console.error('Error:', error);
+      const errorMessage = {
+        id: Date.now() + 1,
+        text: 'Sorry, something went wrong. Please try again later.',
+        sender: 'ai',
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="w-full max-w-3xl mx-auto">
+      <div className="text-center mb-12">
+        <h1 className="text-5xl font-bold bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent mb-4">
+          AI Assistant
+        </h1>
+        <p className="text-gray-400 text-lg">
+          Ask me anything about Prabesh, his projects, skills, and experience
+        </p>
+      </div>
+
+      {/* Chat Container */}
+      <GlassPanel className="p-6 border-neon-blue/30 flex flex-col h-[600px]">
+        {/* Messages Display */}
+        <div className="flex-1 overflow-y-auto mb-6 space-y-4 pr-4" style={{
+          scrollbarWidth: 'thin',
+          scrollbarColor: 'rgba(0, 243, 255, 0.3) transparent'
+        }}>
+          {messages.map((msg) => (
+            <motion.div
+              key={msg.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+            >
+              <div
+                className={`max-w-xs lg:max-w-md px-4 py-3 rounded-lg ${
+                  msg.sender === 'user'
+                    ? 'bg-gradient-to-r from-neon-blue/20 to-neon-purple/20 border border-neon-blue/30 text-neon-blue'
+                    : 'bg-glass-bg border border-glass-border text-gray-200'
+                }`}
+              >
+                <p className="text-sm leading-relaxed">{msg.text}</p>
+              </div>
+            </motion.div>
+          ))}
+          {loading && (
+            <div className="flex justify-start">
+              <div className="bg-glass-bg border border-glass-border px-4 py-3 rounded-lg">
+                <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity }}>
+                  <Loader size={20} className="text-neon-blue" />
+                </motion.div>
+              </div>
+            </div>
+          )}
+          <div ref={messagesEndRef} />
+        </div>
+
+        {/* Suggested Prompts */}
+        {messages.length === 1 && (
+          <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+            {SUGGESTED_PROMPTS.map((prompt, index) => (
+              <motion.button
+                key={index}
+                whileHover={{ scale: 1.02 }}
+                onClick={() => handleSendMessage(prompt)}
+                className="p-3 text-left bg-glass-bg border border-glass-border rounded-lg hover:border-neon-blue hover:shadow-[0_0_15px_rgba(0,243,255,0.2)] transition text-sm text-gray-300 hover:text-neon-blue"
+              >
+                {prompt}
+              </motion.button>
+            ))}
+          </div>
+        )}
+
+        {/* Input Area */}
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && !loading && handleSendMessage()}
+            placeholder="Type your message..."
+            disabled={loading}
+            className="flex-1 px-4 py-3 bg-glass-bg border border-glass-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon-blue disabled:opacity-50"
+          />
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => handleSendMessage()}
+            disabled={loading}
+            className="px-4 py-3 bg-gradient-to-r from-neon-blue to-neon-purple rounded-lg text-white hover:shadow-[0_0_20px_rgba(0,243,255,0.5)] transition disabled:opacity-50"
+          >
+            <Send size={20} />
+          </motion.button>
+        </div>
+      </GlassPanel>
+    </div>
+  );
+};
+
 // --- Main App Component ---
 
 const App = () => {
@@ -722,8 +790,7 @@ const App = () => {
       case 'services': return <ServicesUniverse />;
       case 'achievements': return <AchievementsUniverse />;
       case 'testimonials': return <TestimonialsUniverse />;
-      case 'stats': return <StatsUniverse />;
-      case 'ai': return <AIChatbotUniverse />;
+      case 'ai': return <AIUniverse />;
       case 'contact': return <ContactUniverse />;
       default: return <HeroUniverse />;
     }
