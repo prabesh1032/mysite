@@ -146,7 +146,7 @@ const SkillsUniverse = () => (
           <GlassPanel className="p-4 hover:border-neon-blue transition-colors group">
             <div className="flex justify-between items-end mb-2">
               <h3 className="font-rajdhani font-bold text-lg text-white group-hover:text-neon-blue transition-colors">{skill.name}</h3>
-              <span className="text-neon-purple font-mono text-xs">{skill.level}%</span>
+              <span className="text-neon-purple font-mono text-xl">{skill.level}%</span>
             </div>
             <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
               <motion.div

@@ -41,14 +41,14 @@ export const SKILLS = [
 
 export const PROJECTS = [
   {
-    id: 0,
-    title: "The Ink Light",
-    category: "Blog & Content Platform",
-    description: "A modern MERN stack blog platform designed for publishing and managing articles with a clean and responsive user interface. Features include dynamic blog management, category-based content organization, responsive layouts, and smooth user experience for readers across all devices.",
-    tech: [ "React.js", "Tailwind CSS","Express.js", "PostgreSQL"],
-    image: "/images/theinklight/inklight.png",
-    github: "https://github.com/prabesh1032",
-    live: "https://theinklight-frontend.onrender.com/"
+  id: 0,
+  title: "TypeTheory",
+  category: "Blog & Content Platform",
+  description: "A full-stack blog platform built with React and Laravel, designed for publishing and managing articles. Features include user authentication, dynamic blog management, category-based content organization, Cloudinary image uploads, and a clean responsive UI for readers across all devices.",
+  tech: ["React.js", "Tailwind CSS", "Laravel", "PostgreSQL", "Cloudinary"],
+  image: "/images/typetheory/typetheory.png",
+  github: "https://github.com/prabesh1032",
+  live: "https://typetheory.vercel.app/"
   },
   {
     id: 2,
@@ -116,7 +116,17 @@ export const PROJECTS = [
     github: "https://github.com/prabesh1032/Food-Circle"
   },
   {
-    id: 9,
+  id: 9,
+  title: "TheInkLight",
+  category: "Blog & Content Platform",
+  description: "A modern blog platform designed for publishing and managing articles with a clean and responsive user interface. Features include dynamic blog management, category-based content organization, responsive layouts, and smooth user experience for readers across all devices.",
+  tech: ["React.js", "Tailwind CSS", "Express.js", "PostgreSQL"],
+  image: "/images/theinklight/inklight.png",
+  github: "https://github.com/prabesh1032",
+  live: "https://theinklight-frontend.onrender.com/"
+},
+  {
+    id: 10,
     title: "Lumbini ICT Campus",
     category: "Educational",
     description: "Comprehensive digital platform showcasing institutional academic excellence, modern facilities, and vibrant student community. Features academic programs, faculty profiles, student resources, event management, alumni network, and virtual campus tours.",
@@ -125,7 +135,7 @@ export const PROJECTS = [
     github: "https://github.com/Amansolta/lict"
   },
   {
-    id: 10,
+    id: 11,
     title: "Ankur Nepal",
     category: "Non-Profit",
     description: "Ankur Nepal is a dedicated non-profit organization committed to child welfare and community development. The website showcases ongoing projects, fundraising campaigns, volunteer opportunities, and impact stories with donation system and transparent financial reporting.",
@@ -135,7 +145,7 @@ export const PROJECTS = [
   },
 
   {
-    id: 11,
+    id: 12,
     title: "Landing Page",
     category: "Web Design",
     description: "Creative and modern landing page template designed for startups, products, and services. Features hero sections, feature highlights, testimonials, pricing tables, newsletter subscription, and responsive design optimized for conversions.",
@@ -143,6 +153,7 @@ export const PROJECTS = [
     image: "/images/landing page/landing1.png",
     github: "https://github.com/prabesh1032/landing-page"
   }
+
 ];
 
 export const EXPERIENCE = [
