@@ -111,7 +111,7 @@ const AboutUniverse = () => (
           </div>
           <div className="mt-6 ml-16">
             <a
-              href="/resume/Prabesh-Acharya-Resume.pdf"
+              href="/resume/Resume.pdf"
               download
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-orbitron text-sm text-white bg-gradient-to-r from-neon-purple/90 to-neon-pink/90 border border-neon-purple/40 shadow-[0_0_20px_rgba(188,19,254,0.25)] hover:shadow-[0_0_28px_rgba(255,46,99,0.35)] hover:from-neon-purple hover:to-neon-pink transition"
             >
