@@ -51,6 +51,16 @@ export const PROJECTS = [
   live: "https://typetheory.vercel.app/"
   },
   {
+    id: 6,
+    title: "Task Management",
+    category: "Productivity",
+    description: "Robust and user-friendly application designed to streamline task organization and progress tracking. Features task creation, editing, deletion with form validation, user dashboard, status tracking, and role-based access control system.",
+    tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
+    image: "/images/task management/task management.png",
+    github: "https://github.com/prabesh1032/Task-management",
+    live: "https://task-management-1-6r9k.onrender.com/"
+  },
+  {
     id: 2,
     title: "Connect for Study",
     category: "Education & Migration",
@@ -87,15 +97,6 @@ export const PROJECTS = [
     tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
     image: "/images/yatrasathi/home-bg2.jpg",
     github: "https://github.com/prabesh1032/YatraSathi"
-  },
-  {
-    id: 6,
-    title: "Task Management",
-    category: "Productivity",
-    description: "Robust and user-friendly application designed to streamline task organization and progress tracking. Features task creation, editing, deletion with form validation, user dashboard, status tracking, and role-based access control system.",
-    tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
-    image: "/images/task management/task management.png",
-    github: "https://github.com/prabesh1032/Task-management"
   },
   {
     id: 7,
