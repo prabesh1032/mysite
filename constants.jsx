@@ -162,7 +162,7 @@ export const EXPERIENCE = [
     id: 1,
     role: "Web Developer",
     company: "Bitmap IT Solution Pvt Ltd",
-    period: "2024 - 2025",
+    period: "2025 - 2026",
     description:
       "Developed scalable web applications using Laravel, React.js, PHP, and MySQL. Built reusable frontend components, integrated REST APIs, improved application performance, and created responsive modern user interfaces."
   },
