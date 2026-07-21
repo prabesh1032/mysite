@@ -253,7 +253,7 @@ const ExperienceUniverse = () => (
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: idx * 0.2 }}
-          className="mb-8 relative"
+          className="mb-10 relative"
         >
           <span className="absolute -left-[41px] top-0 flex items-center justify-center w-6 h-6 rounded-full bg-black border-2 border-neon-purple shadow-[0_0_10px_#bc13fe]">
             <div className="w-2 h-2 bg-neon-purple rounded-full animate-pulse" />

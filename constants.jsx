@@ -41,14 +41,14 @@ export const SKILLS = [
 
 export const PROJECTS = [
   {
-  id: 0,
-  title: "TypeTheory",
-  category: "Blog & Content Platform",
-  description: "A full-stack blog platform built with React and Laravel, designed for publishing and managing articles. Features include user authentication, dynamic blog management, category-based content organization, Cloudinary image uploads, and a clean responsive UI for readers across all devices.",
-  tech: ["React.js", "Tailwind CSS", "Laravel", "PostgreSQL", "Cloudinary"],
-  image: "/images/typetheory/typetheory.png",
-  github: "https://github.com/prabesh1032",
-  live: "https://typetheory.vercel.app/"
+    id: 0,
+    title: "TypeTheory",
+    category: "Blog & Content Platform",
+    description: "A full-stack blog platform built with React and Laravel, designed for publishing and managing articles. Features include user authentication, dynamic blog management, category-based content organization, Cloudinary image uploads, and a clean responsive UI for readers across all devices.",
+    tech: ["React.js", "Tailwind CSS", "Laravel", "PostgreSQL", "Cloudinary"],
+    image: "/images/typetheory/typetheory.png",
+    github: "https://github.com/prabesh1032",
+    live: "https://typetheory.vercel.app/"
   },
   {
     id: 6,
@@ -112,20 +112,20 @@ export const PROJECTS = [
     title: "FoodCircle",
     category: "Social Platform",
     description: "Vibrant social platform for food enthusiasts and culinary creators. Share recipes, food blogs, cooking tips, and culinary stories with comprehensive recipe database, community forums, chef profiles, and restaurant reviews.",
-    tech: ["Laravel", "JavaScript", "Tailwind CSS", ],
+    tech: ["Laravel", "JavaScript", "Tailwind CSS",],
     image: "/images/foodcircle/foodcircle.jpg",
     github: "https://github.com/prabesh1032/Food-Circle"
   },
   {
-  id: 9,
-  title: "TheInkLight",
-  category: "Blog & Content Platform",
-  description: "A modern blog platform designed for publishing and managing articles with a clean and responsive user interface. Features include dynamic blog management, category-based content organization, responsive layouts, and smooth user experience for readers across all devices.",
-  tech: ["React.js", "Tailwind CSS", "Express.js", "PostgreSQL"],
-  image: "/images/theinklight/inklight.png",
-  github: "https://github.com/prabesh1032",
-  live: "https://theinklight-frontend.onrender.com/"
-},
+    id: 9,
+    title: "TheInkLight",
+    category: "Blog & Content Platform",
+    description: "A modern blog platform designed for publishing and managing articles with a clean and responsive user interface. Features include dynamic blog management, category-based content organization, responsive layouts, and smooth user experience for readers across all devices.",
+    tech: ["React.js", "Tailwind CSS", "Express.js", "PostgreSQL"],
+    image: "/images/theinklight/inklight.png",
+    github: "https://github.com/prabesh1032",
+    live: "https://theinklight-frontend.onrender.com/"
+  },
   {
     id: 10,
     title: "Lumbini ICT Campus",
@@ -160,41 +160,49 @@ export const PROJECTS = [
 export const EXPERIENCE = [
   {
     id: 1,
-    role: "Web Developer",
-    company: "Bitmap IT Solution Pvt Ltd",
-    period: "2025 - 2026",
+    role: "Full Stack Developer",
+    company: "Cloudlaya (Technozlife Information Technology Pvt. Ltd.)",
+    period: "2026 - Present",
     description:
-      "Developed scalable web applications using Laravel, React.js, PHP, and MySQL. Built reusable frontend components, integrated REST APIs, improved application performance, and created responsive modern user interfaces."
+      "Working on real-world SaaS applications using Laravel, Next.js, TypeScript, and modern web technologies. Collaborating with experienced developers, understanding large-scale codebases, integrating REST APIs, and contributing to business-focused web solutions."
   },
 
   {
     id: 2,
-    role: "Full Stack Developer",
-    company: "Freelance & Personal Projects",
-    period: "2023 - Present",
+    role: "MERN Stack Trainee",
+    company: "Broadway Infosys Nepal",
+    period: "2026 - Present",
     description:
-      "Built and deployed full-stack web applications including educational platforms, business websites, and modern frontend systems using Laravel, React.js, Tailwind CSS, and REST APIs."
+      "Learning the MERN stack with a focus on React.js, Next.js, Node.js, Express.js, MongoDB, REST APIs, authentication, and full-stack application development through practical projects."
   },
 
   {
     id: 3,
-    role: "Bachelor in Information Management",
-    company: "Tribhuvan University",
-    period: "2021 - 2026",
+    role: "Web Developer",
+    company: "Bitmap IT Solution Pvt. Ltd.",
+    period: "2025 - 2026",
     description:
-      "Studying web technologies, database systems, software engineering, networking, and project management with practical development experience."
+      "Developed scalable web applications using Laravel, React.js, PHP, and MySQL. Built reusable frontend components, integrated REST APIs, improved application performance, and created responsive user interfaces."
   },
 
   {
     id: 4,
-    role: "Self-Learning & Skill Development",
-    company: "Continuous Learning",
-    period: "2020 - Present",
+    role: "Full Stack Developer",
+    company: "Freelance & Personal Projects",
+    period: "2023 - Present",
     description:
-      "Continuously improving skills in modern web development, UI/UX design, frontend technologies, backend systems, and scalable application architecture through hands-on projects and real-world development."
+      "Designed, developed, and deployed full-stack web applications including blogging platforms, tour booking systems, and business websites using Laravel, React.js, Tailwind CSS, MySQL, PostgreSQL, and REST APIs."
+  },
+
+  {
+    id: 5,
+    role: "Bachelor in Information Management (BIM)",
+    company: "Tribhuvan University",
+    period: "2021 - 2026",
+    description:
+      "Completed a Bachelor's degree in Information Management with a focus on software engineering, web technologies, database systems, networking, project management, and practical software development."
   }
 ];
-
 export const SERVICES = [
   {
     title: "Full Stack Web Development",
