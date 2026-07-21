@@ -51,6 +51,17 @@ export const PROJECTS = [
     live: "https://typetheory.vercel.app/"
   },
   {
+  id: 5,
+  title: "YatraSathi",
+  category: "Travel & Tourism",
+  description:
+    "Comprehensive travel and adventure platform for modern travelers. Features curated destinations, customized tour packages, interactive destination pages, real-time package availability, secure booking system, user authentication, admin dashboard, and responsive design for seamless trip planning.",
+  tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
+  image: "/images/yatrasathi/home-bg2.jpg",
+  github: "https://github.com/prabesh1032/YatraSathi",
+  live: "https://yatrasathi-yl3m.onrender.com/"
+},
+  {
     id: 6,
     title: "Task Management",
     category: "Productivity",
@@ -88,15 +99,6 @@ export const PROJECTS = [
     tech: ["Laravel", "MySQL", "JavaScript", "Tailwind CSS"],
     image: "/images/chethna/ecommerce.jpg",
     github: "https://github.com/Amansolta/chetana"
-  },
-  {
-    id: 5,
-    title: "YatraSathi",
-    category: "Travel & Tourism",
-    description: "Comprehensive travel and adventure platform for modern travel enthusiasts. Features curated destinations, customized travel packages, interactive maps, real-time availability, dynamic package customization, user reviews, and secure booking with multiple payment options.",
-    tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
-    image: "/images/yatrasathi/home-bg2.jpg",
-    github: "https://github.com/prabesh1032/YatraSathi"
   },
   {
     id: 7,
