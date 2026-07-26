@@ -95,31 +95,30 @@ const HeroUniverse = () => (
 
 const AboutUniverse = () => (
   <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-    <SectionHeading title="About Me" subtitle="Who I Am" />    <GlassPanel className="p-8 md:p-12">
+    <SectionHeading title="About Me" subtitle="Who I Am" />
+    <GlassPanel className="p-8 md:p-12">
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div>
           <p className="text-gray-300 font-rajdhani text-lg leading-relaxed mb-6">
             {portfolioData.about}
           </p>
-          <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 w-full">
-            <div className="flex items-center gap-2 text-neon-blue font-orbitron text-sm min-w-0">
-              <MapPin size={16} />
-              <span className="truncate">{portfolioData.location}</span>
-            </div>
 
-            <div className="flex-shrink-0">
-              <a
-                href="/resume/Prabesh_Acharya_Web_Developer.pdf"
-                download
-                className="inline-flex items-center gap-2 px-3 py-2 rounded-lg font-orbitron text-xs sm:text-sm text-white bg-gradient-to-r from-neon-purple/90 to-neon-pink/90 border border-neon-purple/40 shadow-[0_0_16px_rgba(188,19,254,0.18)] hover:shadow-[0_0_22px_rgba(255,46,99,0.28)] transition"
-              >
-                <Download size={16} />
-                <span className="whitespace-nowrap">Resume</span>
-              </a>
+          <div className="mt-8 flex items-center justify-between gap-4 flex-wrap">
+            <div className="flex items-center gap-2 text-gray-400 text-sm font-rajdhani">
+              <MapPin size={16} className="text-neon-blue" />
+              <span>{portfolioData.location}</span>
             </div>
+            <a
+              href="/resume/Prabesh_Acharya_Web_Developer.pdf"
+              download
+              className="group inline-flex items-center gap-2 rounded-lg border border-neon-purple/50 bg-neon-purple/10 px-5 py-2.5 text-sm font-orbitron text-white hover:bg-neon-purple hover:shadow-[0_0_20px_rgba(148,50,255,0.5)] transition-all"
+            >
+              <Download size={16} className="group-hover:animate-bounce" />
+              <span>Download Resume</span>
+            </a>
           </div>
-
         </div>
+
         <div className="relative h-80 md:h-96 w-full bg-black/50 rounded-lg overflow-hidden border border-neon-purple/30 group">
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
           <img src="/images/profile.jpg" alt="Prabesh Acharya" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
