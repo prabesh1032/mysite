@@ -101,22 +101,20 @@ const AboutUniverse = () => (
           <p className="text-gray-300 font-rajdhani text-lg leading-relaxed mb-6">
             {portfolioData.about}
           </p>
-          <div className="mt-6 flex items-center justify-between gap-4 w-full">
-            <div className="flex items-center gap-4 text-neon-blue font-orbitron text-sm min-w-0">
-              <div className="flex items-center gap-2 min-w-0">
-                <MapPin size={16} />
-                <span className="truncate">{portfolioData.location}</span>
-              </div>
+          <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 w-full">
+            <div className="flex items-center gap-2 text-neon-blue font-orbitron text-sm min-w-0">
+              <MapPin size={16} />
+              <span className="truncate">{portfolioData.location}</span>
             </div>
 
             <div className="flex-shrink-0">
               <a
                 href="/resume/Prabesh_Acharya_Web_Developer.pdf"
                 download
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-orbitron text-sm text-white bg-gradient-to-r from-neon-purple/90 to-neon-pink/90 border border-neon-purple/40 shadow-[0_0_18px_rgba(188,19,254,0.2)] hover:shadow-[0_0_26px_rgba(255,46,99,0.32)] transition"
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-lg font-orbitron text-xs sm:text-sm text-white bg-gradient-to-r from-neon-purple/90 to-neon-pink/90 border border-neon-purple/40 shadow-[0_0_16px_rgba(188,19,254,0.18)] hover:shadow-[0_0_22px_rgba(255,46,99,0.28)] transition"
               >
                 <Download size={16} />
-                <span className="whitespace-nowrap">Download Resume</span>
+                <span className="whitespace-nowrap">Resume</span>
               </a>
             </div>
           </div>
