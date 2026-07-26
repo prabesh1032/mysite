@@ -5,24 +5,40 @@ import {
 
 export const portfolioData = {
   name: "Prabesh Acharya",
-  role: "Web Developer",
-  tagline: "Building clean, functional, and user-friendly web experiences.",
-  about: "Passionate  Web Developer with experience in Laravel, React.js, and modern frontend technologies. Skilled in building responsive web applications, REST API integrations, and scalable backend systems with clean UI, optimized performance, and user-focused design. Experienced in developing dynamic admin dashboards, reusable frontend components, and modern web solutions that deliver smooth and efficient user experiences.",
-  location: "Nepal",
+
+  role: "Full Stack Developer",
+
+  tagline:
+    "Building scalable, modern, and user-centric web applications with Laravel, Next.js and MERN Stack.",
+
+  about:
+    "I'm a Full Stack Developer passionate about building modern, scalable, and high-performance web applications. I specialize in MERN Stack, Laravel, Next.js, React, TypeScript, and REST APIs. I enjoy transforming complex business requirements into clean, responsive, and user-friendly digital experiences while continuously learning modern technologies and software architecture.",
+
+  location: "Kathmandu, Nepal",
+
   email: "praveshach1032@gmail.com",
+
   phone: "+977 9812965110",
+
   github: "https://github.com/prabesh1032",
-  linkedin: "https://www.linkedin.com/in/prabesh-acharya-8547a2321/",
+
+  linkedin: "https://www.linkedin.com/in/prabesh1032/",
+
   instagram: "https://www.instagram.com/prabesh_ach/",
+
   twitter: "https://x.com/PrabeshAch33319",
+
   facebook: "https://www.facebook.com/pravesh.ach/",
-  portfolio: ""
+
+  portfolio: "https://prabeshacharya10.com.np"
 };
 
 export const SKILLS = [
   // Frontend
   { name: "JavaScript", level: 88, category: "Frontend" },
-  { name: "React.js", level: 82, category: "Frontend" },
+  { name: "TypeScript", level: 72, category: "Frontend" },
+  { name: "React.js", level: 85, category: "Frontend" },
+  { name: "Next.js", level: 75, category: "Frontend" },
   { name: "Tailwind CSS", level: 92, category: "Frontend" },
   { name: "Bootstrap", level: 85, category: "Frontend" },
   { name: "Responsive Design", level: 90, category: "Frontend" },
@@ -30,13 +46,16 @@ export const SKILLS = [
 
   // Backend
   { name: "PHP", level: 88, category: "Backend" },
-  { name: "Laravel", level: 86, category: "Backend" },
-  { name: "REST APIs", level: 84, category: "Backend" },
-  { name: "MySQL", level: 82, category: "Backend" },
+  { name: "Laravel", level: 87, category: "Backend" },
+  { name: "Node.js", level: 75, category: "Backend" },
+  { name: "Express.js", level: 72, category: "Backend" },
+  { name: "REST APIs", level: 85, category: "Backend" },
+  { name: "MySQL", level: 84, category: "Backend" },
+  { name: "MongoDB", level: 72, category: "Backend" },
 
   // Tools
-  { name: "Git & GitHub", level: 85, category: "Tools" },
-  { name: "Postman", level: 78, category: "Tools" },
+  { name: "Git & GitHub", level: 88, category: "Tools" },
+  { name: "Postman", level: 82, category: "Tools" },
 ];
 
 export const PROJECTS = [
@@ -51,16 +70,16 @@ export const PROJECTS = [
     live: "https://typetheory.vercel.app/"
   },
   {
-  id: 5,
-  title: "YatraSathi",
-  category: "Travel & Tourism",
-  description:
-    "Comprehensive travel and adventure platform for modern travelers. Features curated destinations, customized tour packages, interactive destination pages, real-time package availability, secure booking system, user authentication, admin dashboard, and responsive design for seamless trip planning.",
-  tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
-  image: "/images/yatrasathi/home-bg2.jpg",
-  github: "https://github.com/prabesh1032/YatraSathi",
-  live: "https://yatrasathi-yl3m.onrender.com/"
-},
+    id: 5,
+    title: "YatraSathi",
+    category: "Travel & Tourism",
+    description:
+      "Comprehensive travel and adventure platform for modern travelers. Features curated destinations, customized tour packages, interactive destination pages, real-time package availability, secure booking system, user authentication, admin dashboard, and responsive design for seamless trip planning.",
+    tech: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
+    image: "/images/yatrasathi/home-bg2.jpg",
+    github: "https://github.com/prabesh1032/YatraSathi",
+    live: "https://yatrasathi-yl3m.onrender.com/"
+  },
   {
     id: 6,
     title: "Task Management",
@@ -166,7 +185,7 @@ export const EXPERIENCE = [
     company: "Cloudlaya (Technozlife Information Technology Pvt. Ltd.)",
     period: "2026 - Present",
     description:
-      "Working on real-world SaaS applications using Laravel, Next.js, TypeScript, and modern web technologies. Collaborating with experienced developers, understanding large-scale codebases, integrating REST APIs, and contributing to business-focused web solutions."
+      "Contributing to the development of real-world SaaS applications using Laravel, Next.js, TypeScript, and modern web technologies. Working with large-scale production codebases, developing reusable frontend components, integrating REST APIs, optimizing application performance, and collaborating with experienced developers to deliver scalable business solutions."
   },
 
   {
@@ -175,25 +194,25 @@ export const EXPERIENCE = [
     company: "Broadway Infosys Nepal",
     period: "2026 - Present",
     description:
-      "Learning the MERN stack with a focus on React.js, Next.js, Node.js, Express.js, MongoDB, REST APIs, authentication, and full-stack application development through practical projects."
+      "Learning and building full-stack web applications using the MERN stack, including MongoDB, Express.js, React.js, and Node.js. Gaining hands-on experience with authentication, REST APIs, state management, database design, and modern JavaScript development through practical projects."
   },
 
   {
     id: 3,
-    role: "Web Developer",
+    role: "PHP & Laravel Full Stack Developer",
     company: "Bitmap IT Solution Pvt. Ltd.",
     period: "2025 - 2026",
     description:
-      "Developed scalable web applications using Laravel, React.js, PHP, and MySQL. Built reusable frontend components, integrated REST APIs, improved application performance, and created responsive user interfaces."
+      "Developed and maintained scalable web applications using Laravel, React.js, PHP, and MySQL. Built reusable frontend components, integrated RESTful APIs, optimized application performance, and delivered responsive user interfaces for real-world business requirements."
   },
 
   {
     id: 4,
-    role: "Full Stack Developer",
+    role: "Freelance Full Stack Developer",
     company: "Freelance & Personal Projects",
     period: "2023 - Present",
     description:
-      "Designed, developed, and deployed full-stack web applications including blogging platforms, tour booking systems, and business websites using Laravel, React.js, Tailwind CSS, MySQL, PostgreSQL, and REST APIs."
+      "Designed, developed, and deployed full-stack web applications including blogging platforms, travel booking systems, business websites, and management systems using Laravel, React.js, Tailwind CSS, MySQL, PostgreSQL, and REST APIs while following modern development practices."
   },
 
   {
@@ -202,7 +221,7 @@ export const EXPERIENCE = [
     company: "Tribhuvan University",
     period: "2021 - 2026",
     description:
-      "Completed a Bachelor's degree in Information Management with a focus on software engineering, web technologies, database systems, networking, project management, and practical software development."
+      "Completed a Bachelor's degree in Information Management with a strong foundation in software engineering, web development, database management, networking, system analysis, project management, and practical software development."
   }
 ];
 export const SERVICES = [
@@ -210,60 +229,101 @@ export const SERVICES = [
     title: "Full Stack Web Development",
     icon: Globe,
     description:
-      "Building responsive and scalable web applications using Laravel, React.js, PHP, and modern frontend technologies."
+      "Building scalable, secure, and high-performance web applications using MERN Stack, Laravel, Next.js, TypeScript, and modern web technologies."
   },
   {
     title: "Frontend Development",
     icon: Layers,
     description:
-      "Creating modern, responsive, and user-friendly interfaces with React.js, Tailwind CSS, and JavaScript."
+      "Developing responsive, interactive, and user-friendly interfaces using React.js, Next.js, TypeScript, Tailwind CSS, and modern UI practices."
   },
   {
-    title: "Backend Development",
+    title: "Backend & API Development",
     icon: Cpu,
     description:
-      "Developing secure backend systems, REST APIs, authentication, and dynamic functionalities using Laravel and PHP."
+      "Building robust backend systems, RESTful APIs, authentication, database architecture, and business logic using Laravel, Node.js, Express.js, PHP, and MySQL."
   },
   {
-    title: "REST API Integration",
-    icon: Globe,
+    title: "Database Design",
+    icon: Database,
     description:
-      "Integrating third-party APIs and building efficient RESTful services for seamless data communication."
+      "Designing efficient database structures and managing data using MySQL, PostgreSQL, and MongoDB with optimized performance and scalability."
   },
   {
-    title: "Admin Dashboard Systems",
-    icon: Layers,
+    title: "SaaS & Business Applications",
+    icon: Briefcase,
     description:
-      "Building dynamic admin panels with content management, analytics, and user management functionalities."
+      "Developing business-focused web applications including admin dashboards, content management systems, booking platforms, and productivity solutions."
   },
   {
-    title: "Website Maintenance",
-    icon: Cpu,
+    title: "Performance & Optimization",
+    icon: Zap,
     description:
-      "Providing bug fixes, performance optimization, responsive improvements, and ongoing website support."
+      "Improving website speed, responsiveness, SEO, accessibility, and overall user experience through modern development best practices."
   }
 ];
 
 export const TESTIMONIALS = [
-  { id: 1, name: "Pratik Tiwari", role: "Graphics Designer", text: "Prabesh delivered exceptional work on our travel platform. His attention to detail and technical expertise made the project a success.", avatar: "/images/testinomials/pratik.jpg" },
-  { id: 2, name: "Pradip Khanal", role: "Front-End Developer", text: "Working with Prabesh was a great experience. He's dedicated, skilled, and always willing to learn and improve.", avatar: "/images/testinomials/pradip.jpg" },
-  { id: 3, name: "Arjun Bhusal", role: "Back-End Developer", text: "Prabesh has strong problem-solving skills and writes clean, maintainable code. A valuable team member.", avatar: "/images/testinomials/arjun.jpg" }
+  {
+    id: 1,
+    name: "Pratik Tiwari",
+    role: "Graphic Designer",
+    text: "Prabesh transformed our design ideas into a responsive and functional web application. His communication, attention to detail, and ability to solve technical challenges made collaboration smooth and efficient.",
+    avatar: "/images/testinomials/pratik.jpg"
+  },
+
+  {
+    id: 2,
+    name: "Pradip Khanal",
+    role: "Frontend Developer",
+    text: "Prabesh is a quick learner who consistently writes clean, maintainable code. He's always open to feedback and works well in a collaborative development environment.",
+    avatar: "/images/testinomials/pradip.jpg"
+  },
+
+  {
+    id: 3,
+    name: "Arjun Bhusal",
+    role: "Backend Developer",
+    text: "I enjoyed collaborating with Prabesh on Laravel projects. His API integration skills, problem-solving approach, and commitment to delivering quality work make him a dependable developer.",
+    avatar: "/images/testinomials/arjun.jpg"
+  }
 ];
 
 export const ACHIEVEMENTS = [
-  { title: "10+ Web Projects Built", org: "Full Stack Development" },
+  {
+    title: "10+ Full Stack Projects",
+    org: "Successfully Designed & Developed"
+  },
 
-  { title: "1+ Year Professional Experience", org: "Bitmap IT Solution Pvt Ltd" },
+  {
+    title: "Real Industry Experience",
+    org: "Cloudlaya & Bitmap IT Solution"
+  },
 
-  { title: "Modern Full Stack Applications", org: "Laravel & React.js" },
+  {
+    title: "Production Web Applications",
+    org: "Laravel, Next.js & MERN Stack"
+  },
 
-  { title: "REST API Integration Experience", org: "Backend Development" },
+  {
+    title: "REST API Development",
+    org: "Authentication & Third-Party Integrations"
+  },
 
-  { title: "Responsive UI/UX Development", org: "Modern Frontend Design" },
+  {
+    title: "Modern Database Experience",
+    org: "MySQL, PostgreSQL & MongoDB"
+  },
 
-  { title: "Git & GitHub Workflow", org: "Version Control & Collaboration" },
+  {
+    title: "Version Control & Collaboration",
+    org: "Git, GitHub & Team Workflow"
+  },
 
-  { title: "Continuous Learning Journey", org: "Web Technologies & Development" }
+  {
+    title: "Continuous Learning",
+    org: "Next.js, TypeScript & System Design"
+  }
 ];
 
 export const UNIVERSES = [
@@ -272,8 +332,8 @@ export const UNIVERSES = [
   { id: 'skills', name: 'Skills', icon: Zap },
   { id: 'projects', name: 'Projects', icon: Layers },
   { id: 'experience', name: 'Experience', icon: Clock },
-  { id: 'services', name: 'Services', icon: Cpu },
-  { id: 'achievements', name: 'Achievements', icon: Trophy },
+  { id: 'services', name: 'WHAT I DO', icon: Cpu },
+  { id: 'achievements', name: 'Career Highlights', icon: Trophy },
   { id: 'testimonials', name: 'Testimonials', icon: MessageSquare },
   { id: 'ai', name: 'AI Assistant', icon: Bot },
   { id: 'contact', name: 'Contact', icon: Mail },

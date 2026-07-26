@@ -61,7 +61,7 @@ const HeroUniverse = () => (
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
         className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-neon-blue shadow-[0_0_30px_rgba(0,243,255,0.5)] mx-auto mb-6 overflow-hidden bg-black"
       >
-         <img src="/images/profile2.png" alt="Prabesh Acharya" className="w-full h-full object-cover" />
+        <img src="/images/profile2.png" alt="Prabesh Acharya" className="w-full h-full object-cover" />
       </motion.div>
 
       <motion.h1
@@ -95,7 +95,7 @@ const HeroUniverse = () => (
 
 const AboutUniverse = () => (
   <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-<SectionHeading title="About Me" subtitle="Who I Am" />    <GlassPanel className="p-8 md:p-12">
+    <SectionHeading title="About Me" subtitle="Who I Am" />    <GlassPanel className="p-8 md:p-12">
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div>
           <p className="text-gray-300 font-rajdhani text-lg leading-relaxed mb-6">
@@ -135,7 +135,7 @@ const AboutUniverse = () => (
 
 const SkillsUniverse = () => (
   <div className="max-w-5xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-<SectionHeading title="Skills" subtitle="Tech Stack" />    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <SectionHeading title="Skills" subtitle="Tech Stack" />    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {SKILLS.map((skill, idx) => (
         <motion.div
           key={idx}
@@ -167,7 +167,7 @@ const SkillsUniverse = () => (
 const ProjectsUniverse = () => {
   return (
     <div className="max-w-6xl mx-auto min-h-full flex flex-col justify-center relative py-12 md:py-20">
-<SectionHeading title="Projects" subtitle="Featured Work" />
+      <SectionHeading title="Projects" subtitle="Featured Work" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {PROJECTS.map((project, idx) => (
           <motion.div
@@ -245,7 +245,7 @@ const ProjectsUniverse = () => {
 
 const ExperienceUniverse = () => (
   <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-<SectionHeading title="Experience" subtitle="Career Journey" />
+    <SectionHeading title="Experience" subtitle="Career Journey" />
     <div className="relative pl-8 border-l-2 border-gray-800 ml-4 md:ml-0">
       {EXPERIENCE.map((exp, idx) => (
         <motion.div
@@ -274,32 +274,32 @@ const ExperienceUniverse = () => (
 
 const ServicesUniverse = () => (
   <div className="max-w-5xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-<SectionHeading title="Services" subtitle="What I Offer" />
-     <div className="grid md:grid-cols-3 gap-6">
-        {SERVICES.map((s, i) => (
-          <motion.div
-            key={i}
-            whileHover={{ y: -10 }}
-            className="h-full"
-          >
-            <GlassPanel className="p-6 h-full border-t-4 border-t-neon-blue">
-               <div className="mb-4 text-neon-blue">
-                 <div className="w-12 h-12 bg-neon-blue/10 rounded-lg flex items-center justify-center border border-neon-blue/30">
-                   <s.icon size={22} />
-                 </div>
-               </div>
-               <h3 className="text-xl font-bold text-white font-orbitron mb-3">{s.title}</h3>
-               <p className="text-gray-400 text-sm leading-relaxed">{s.description}</p>
-            </GlassPanel>
-          </motion.div>
-        ))}
-     </div>
+    <SectionHeading title="WHAT I DO" subtitle="What I Offer" />
+    <div className="grid md:grid-cols-3 gap-6">
+      {SERVICES.map((s, i) => (
+        <motion.div
+          key={i}
+          whileHover={{ y: -10 }}
+          className="h-full"
+        >
+          <GlassPanel className="p-6 h-full border-t-4 border-t-neon-blue">
+            <div className="mb-4 text-neon-blue">
+              <div className="w-12 h-12 bg-neon-blue/10 rounded-lg flex items-center justify-center border border-neon-blue/30">
+                <s.icon size={22} />
+              </div>
+            </div>
+            <h3 className="text-xl font-bold text-white font-orbitron mb-3">{s.title}</h3>
+            <p className="text-gray-400 text-sm leading-relaxed">{s.description}</p>
+          </GlassPanel>
+        </motion.div>
+      ))}
+    </div>
   </div>
 );
 
 const AchievementsUniverse = () => (
   <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-<SectionHeading title="Achievements" subtitle="Milestones & Recognition" />
+    <SectionHeading title="Career Highlights" subtitle="Milestones & Recognition" />
     <div className="grid gap-4">
       {ACHIEVEMENTS.map((ach, i) => (
         <motion.div
@@ -323,29 +323,29 @@ const AchievementsUniverse = () => (
 
 const TestimonialsUniverse = () => (
   <div className="max-w-5xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-     <SectionHeading title="Testimonials" subtitle="Feedback" />
-     <div className="grid md:grid-cols-3 gap-6">
-       {TESTIMONIALS.map((t, i) => (
-         <motion.div
+    <SectionHeading title="Testimonials" subtitle="Feedback" />
+    <div className="grid md:grid-cols-3 gap-6">
+      {TESTIMONIALS.map((t, i) => (
+        <motion.div
           key={t.id}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: i * 0.2 }}
-         >
-           <GlassPanel className="p-6 relative">
-             <div className="absolute -top-3 left-6 text-6xl text-neon-blue/20 font-serif leading-none">"</div>
-             <p className="text-gray-300 italic mb-6 relative z-10">{t.text}</p>
-             <div className="flex items-center gap-3">
-               <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full border border-neon-blue" />
-               <div>
-                 <h4 className="text-white font-bold text-sm">{t.name}</h4>
-                 <p className="text-neon-pink text-xs">{t.role}</p>
-               </div>
-             </div>
-           </GlassPanel>
-         </motion.div>
-       ))}
-     </div>
+        >
+          <GlassPanel className="p-6 relative">
+            <div className="absolute -top-3 left-6 text-6xl text-neon-blue/20 font-serif leading-none">"</div>
+            <p className="text-gray-300 italic mb-6 relative z-10">{t.text}</p>
+            <div className="flex items-center gap-3">
+              <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full border border-neon-blue" />
+              <div>
+                <h4 className="text-white font-bold text-sm">{t.name}</h4>
+                <p className="text-neon-pink text-xs">{t.role}</p>
+              </div>
+            </div>
+          </GlassPanel>
+        </motion.div>
+      ))}
+    </div>
   </div>
 );
 
@@ -415,13 +415,11 @@ const ContactUniverse = () => {
             exit={{ opacity: 0, y: -50 }}
             className="fixed top-4 left-4 right-4 md:absolute md:top-32 md:left-8 md:right-auto z-[9999] max-w-md"
           >
-            <div className={`rounded-lg p-4 shadow-2xl bg-black/95 backdrop-blur-xl border-l-4 ${
-              notification.type === 'success' ? 'border-green-500' : 'border-red-500'
-            }`}>
+            <div className={`rounded-lg p-4 shadow-2xl bg-black/95 backdrop-blur-xl border-l-4 ${notification.type === 'success' ? 'border-green-500' : 'border-red-500'
+              }`}>
               <div className="flex items-start justify-between gap-2">
-                <p className={`font-semibold flex items-start text-sm ${
-                  notification.type === 'success' ? 'text-green-400' : 'text-red-400'
-                }`}>
+                <p className={`font-semibold flex items-start text-sm ${notification.type === 'success' ? 'text-green-400' : 'text-red-400'
+                  }`}>
                   {notification.type === 'success' ? (
                     <CheckCircle className="mr-3 flex-shrink-0 mt-0.5" size={20} />
                   ) : (
@@ -762,8 +760,8 @@ const AIUniverse = () => {
           onScroll={handleMessagesScroll}
           className="relative flex-1 overflow-y-auto mb-6 space-y-4 pr-4"
           style={{
-          scrollbarWidth: 'thin',
-          scrollbarColor: 'rgba(0, 243, 255, 0.3) transparent'
+            scrollbarWidth: 'thin',
+            scrollbarColor: 'rgba(0, 243, 255, 0.3) transparent'
           }}
         >
           {showScrollTop && (
@@ -783,11 +781,10 @@ const AIUniverse = () => {
               className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-xs lg:max-w-md px-4 py-3 rounded-lg ${
-                  msg.sender === 'user'
-                    ? 'bg-gradient-to-r from-neon-blue/20 to-neon-purple/20 border border-neon-blue/30 text-neon-blue'
-                    : 'bg-glass-bg border border-glass-border text-gray-200'
-                }`}
+                className={`max-w-xs lg:max-w-md px-4 py-3 rounded-lg ${msg.sender === 'user'
+                  ? 'bg-gradient-to-r from-neon-blue/20 to-neon-purple/20 border border-neon-blue/30 text-neon-blue'
+                  : 'bg-glass-bg border border-glass-border text-gray-200'
+                  }`}
               >
                 {renderMessageText(msg.text)}
               </div>
