@@ -1,6 +1,7 @@
 import {
   Globe, User, Cpu, Layers, Clock, GraduationCap,
-  Zap, Trophy, MessageSquare, BarChart2, Bot, Mail
+  Zap, Trophy, MessageSquare, BarChart2, Bot, Mail,
+  Database, Briefcase
 } from 'lucide-react';
 
 export const portfolioData = {
