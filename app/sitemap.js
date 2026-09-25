@@ -1,5 +1,7 @@
 import { PROJECTS, projectSlug } from '../constants';
 
+export const dynamic = 'force-static';
+
 export default function sitemap() {
   const baseUrl = 'https://prabeshacharya10.com.np';
   const routes = ['', 'about', 'skills', 'projects', 'experience', 'services', 'achievements', 'testimonials', 'ai', 'contact'];
