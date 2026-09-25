@@ -1,7 +1,8 @@
 import { UNIVERSES } from '../constants';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
-const Navigation = ({ activeUniverse, onNavigate }) => {
+const Navigation = ({ activeUniverse }) => {
   return (
     <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl">
       <div className="bg-black/60 backdrop-blur-md border border-neon-blue/20 rounded-2xl px-4 py-3 shadow-[0_0_20px_rgba(0,243,255,0.1)] flex items-center justify-between overflow-x-auto gap-2 no-scrollbar">
@@ -10,9 +11,10 @@ const Navigation = ({ activeUniverse, onNavigate }) => {
           const isActive = activeUniverse === universe.id;
           
           return (
-            <button
+            <Link
               key={universe.id}
-              onClick={() => onNavigate(universe.id)}
+              href={universe.id === 'hero' ? '/' : `/${universe.id}`}
+              aria-label={`Go to ${universe.name}`}
               className={`relative group flex flex-col items-center justify-center p-2 min-w-[3rem] transition-all duration-300 ${
                 isActive ? 'text-neon-blue scale-110' : 'text-gray-400 hover:text-white'
               }`}
@@ -29,7 +31,7 @@ const Navigation = ({ activeUniverse, onNavigate }) => {
                   className="absolute -bottom-1 w-1 h-1 bg-neon-blue rounded-full shadow-[0_0_5px_#00f3ff]"
                 />
               )}
-            </button>
+            </Link>
           );
         })}
       </div>

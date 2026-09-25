@@ -1,5 +1,10 @@
+'use client';
+
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import gsap from 'gsap';
 import {
   Tooltip as RechartTooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar
 } from 'recharts';
@@ -8,7 +13,7 @@ import emailjs from '@emailjs/browser';
 import Starfield from './components/Starfield';
 import Navigation from './components/Navigation';
 
-import { portfolioData, SKILLS, PROJECTS, EXPERIENCE, SERVICES, ACHIEVEMENTS, TESTIMONIALS } from './constants';
+import { portfolioData, SKILLS, PROJECTS, EXPERIENCE, SERVICES, ACHIEVEMENTS, TESTIMONIALS, projectSlug } from './constants';
 
 // --- Shared UI Components ---
 
@@ -19,15 +24,17 @@ const GlassPanel = ({ children, className = "" }) => (
   </div>
 );
 
-const SectionHeading = ({ title, subtitle }) => (
+const SectionHeading = ({ title, subtitle, headingLevel = 'h2' }) => {
+  const Heading = motion[headingLevel];
+  return (
   <div className="mb-8 text-center">
-    <motion.h2
+    <Heading
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       className="text-4xl md:text-5xl font-orbitron font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple drop-shadow-[0_0_10px_rgba(0,243,255,0.3)]"
     >
       {title}
-    </motion.h2>
+    </Heading>
     <motion.p
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -37,7 +44,8 @@ const SectionHeading = ({ title, subtitle }) => (
       {subtitle}
     </motion.p>
   </div>
-);
+  );
+};
 
 // --- Universes ---
 
@@ -61,7 +69,7 @@ const HeroUniverse = () => (
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
         className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-neon-blue shadow-[0_0_30px_rgba(0,243,255,0.5)] mx-auto mb-6 overflow-hidden bg-black"
       >
-        <img src="/images/profile2.png" alt="Prabesh Acharya" className="w-full h-full object-cover" />
+        <Image src="/images/profile2.png" alt="Prabesh Acharya, Full Stack Developer" width={192} height={192} priority className="w-full h-full object-cover" />
       </motion.div>
 
       <motion.h1
@@ -95,7 +103,7 @@ const HeroUniverse = () => (
 
 const AboutUniverse = () => (
   <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-    <SectionHeading title="About Me" subtitle="Who I Am" />
+    <SectionHeading title="About Me" subtitle="Who I Am" headingLevel="h1" />
     <GlassPanel className="p-8 md:p-12">
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div>
@@ -109,7 +117,7 @@ const AboutUniverse = () => (
               <span>{portfolioData.location}</span>
             </div>
             <a
-              href="/resume/Prabesh_Acharya_Web_Developer.pdf"
+              href="/resume/Prabesh_Acharya_Full_Stack_Developer_Resume.pdf"
               download
               className="group inline-flex items-center gap-2 rounded-lg border border-neon-purple/50 bg-neon-purple/10 px-5 py-2.5 text-sm font-orbitron text-white hover:bg-neon-purple hover:shadow-[0_0_20px_rgba(148,50,255,0.5)] transition-all"
             >
@@ -121,9 +129,9 @@ const AboutUniverse = () => (
 
         <div className="relative h-80 md:h-96 w-full bg-black/50 rounded-lg overflow-hidden border border-neon-purple/30 group">
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
-          <img src="/images/profile.jpg" alt="Prabesh Acharya" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+          <Image src="/images/profile.jpg" alt="Prabesh Acharya working as a Full Stack Developer" width={800} height={960} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
           <div className="absolute bottom-4 left-4 z-20">
-            <h3 className="text-xl font-bold font-orbitron text-white">Web Developer</h3>
+            <h3 className="text-xl font-bold font-orbitron text-white">Full Stack Developer</h3>
             <p className="text-neon-pink text-xs">Access Granted</p>
           </div>
         </div>
@@ -134,7 +142,7 @@ const AboutUniverse = () => (
 
 const SkillsUniverse = () => (
   <div className="max-w-5xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-    <SectionHeading title="Skills" subtitle="Tech Stack" />    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <SectionHeading title="Skills" subtitle="Tech Stack" headingLevel="h1" />    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {SKILLS.map((skill, idx) => (
         <motion.div
           key={idx}
@@ -166,7 +174,7 @@ const SkillsUniverse = () => (
 const ProjectsUniverse = () => {
   return (
     <div className="max-w-6xl mx-auto min-h-full flex flex-col justify-center relative py-12 md:py-20">
-      <SectionHeading title="Projects" subtitle="Featured Work" />
+      <SectionHeading title="Projects" subtitle="Featured Work" headingLevel="h1" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {PROJECTS.map((project, idx) => (
           <motion.div
@@ -178,7 +186,7 @@ const ProjectsUniverse = () => {
           >
             <GlassPanel className="h-full border-neon-blue/20 hover:border-neon-blue/60 transition-all duration-300 flex flex-col">
               <div className="relative h-48 overflow-hidden rounded-t-xl">
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <Image src={project.image} alt={`${project.title} ${project.category.toLowerCase()} project screenshot`} width={800} height={500} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60" />
                 <div className="absolute top-3 right-3">
                   <span className="px-3 py-1 bg-neon-pink/80 backdrop-blur-sm text-white text-xs rounded-full font-mono uppercase border border-neon-pink">
@@ -210,6 +218,12 @@ const ProjectsUniverse = () => {
                 </div>
 
                 <div className="flex gap-3 mt-auto">
+                  <Link
+                    href={`/projects/${projectSlug(project.title)}`}
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-neon-blue/40 hover:bg-neon-blue/10 text-neon-blue rounded-lg transition-all duration-300 text-sm font-semibold"
+                  >
+                    View Details
+                  </Link>
                   {project.github && (
                     <a
                       href={project.github}
@@ -244,7 +258,7 @@ const ProjectsUniverse = () => {
 
 const ExperienceUniverse = () => (
   <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-    <SectionHeading title="Experience" subtitle="Career Journey" />
+    <SectionHeading title="Experience" subtitle="Career Journey" headingLevel="h1" />
     <div className="relative pl-8 border-l-2 border-gray-800 ml-4 md:ml-0">
       {EXPERIENCE.map((exp, idx) => (
         <motion.div
@@ -273,7 +287,7 @@ const ExperienceUniverse = () => (
 
 const ServicesUniverse = () => (
   <div className="max-w-5xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-    <SectionHeading title="WHAT I DO" subtitle="What I Offer" />
+    <SectionHeading title="WHAT I DO" subtitle="What I Offer" headingLevel="h1" />
     <div className="grid md:grid-cols-3 gap-6">
       {SERVICES.map((s, i) => (
         <motion.div
@@ -298,7 +312,7 @@ const ServicesUniverse = () => (
 
 const AchievementsUniverse = () => (
   <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-    <SectionHeading title="Career Highlights" subtitle="Milestones & Recognition" />
+    <SectionHeading title="Career Highlights" subtitle="Milestones & Recognition" headingLevel="h1" />
     <div className="grid gap-4">
       {ACHIEVEMENTS.map((ach, i) => (
         <motion.div
@@ -322,7 +336,7 @@ const AchievementsUniverse = () => (
 
 const TestimonialsUniverse = () => (
   <div className="max-w-5xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
-    <SectionHeading title="Testimonials" subtitle="Feedback" />
+    <SectionHeading title="Testimonials" subtitle="Feedback" headingLevel="h1" />
     <div className="grid md:grid-cols-3 gap-6">
       {TESTIMONIALS.map((t, i) => (
         <motion.div
@@ -335,7 +349,7 @@ const TestimonialsUniverse = () => (
             <div className="absolute -top-3 left-6 text-6xl text-neon-blue/20 font-serif leading-none">"</div>
             <p className="text-gray-300 italic mb-6 relative z-10">{t.text}</p>
             <div className="flex items-center gap-3">
-              <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full border border-neon-blue" />
+              <Image src={t.avatar} alt={`${t.name}, testimonial author`} width={40} height={40} className="w-10 h-10 rounded-full border border-neon-blue" />
               <div>
                 <h4 className="text-white font-bold text-sm">{t.name}</h4>
                 <p className="text-neon-pink text-xs">{t.role}</p>
@@ -403,7 +417,7 @@ const ContactUniverse = () => {
 
   return (
     <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20 px-4 relative">
-      <SectionHeading title="Contact Me" subtitle="Get In Touch" />
+      <SectionHeading title="Contact Me" subtitle="Get In Touch" headingLevel="h1" />
 
       {/* Notification */}
       <AnimatePresence>
@@ -844,24 +858,81 @@ const AIUniverse = () => {
 
 // --- Main App Component ---
 
-const App = () => {
-  const [activeUniverse, setActiveUniverse] = useState('hero');
+const SnakeCursor = () => {
+  const segmentsRef = useRef([]);
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia('(pointer: fine)');
+    if (!desktopQuery.matches) return undefined;
+
+    document.body.classList.add('snake-cursor-active');
+    const segments = segmentsRef.current.filter(Boolean);
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    const moveSnake = (event) => {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+
+      segments.forEach((segment, index) => {
+        gsap.to(segment, {
+          x: mouseX,
+          y: mouseY,
+          duration: 0.16 + index * 0.035,
+          delay: index * 0.012,
+          ease: 'power3.out',
+          overwrite: 'auto',
+        });
+      });
+    };
+
+    window.addEventListener('pointermove', moveSnake, { passive: true });
+    return () => {
+      window.removeEventListener('pointermove', moveSnake);
+      document.body.classList.remove('snake-cursor-active');
+      gsap.killTweensOf(segments);
+    };
+  }, []);
+
+  return (
+    <div className="pointer-events-none fixed inset-0 z-[100] hidden md:block" aria-hidden="true">
+      {Array.from({ length: 12 }).map((_, index) => (
+        <span
+          key={index}
+          ref={(element) => { segmentsRef.current[index] = element; }}
+          className="absolute left-0 top-0 -ml-1.5 -mt-1.5 rounded-full bg-neon-blue shadow-[0_0_12px_rgba(0,243,255,0.9)]"
+          style={{
+            width: `${Math.max(5, 13 - index * 0.65)}px`,
+            height: `${Math.max(5, 13 - index * 0.65)}px`,
+            opacity: Math.max(0.18, 1 - index * 0.065),
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+const App = ({ initialUniverse = 'hero' }) => {
+  const activeUniverse = initialUniverse;
   const mainRef = useRef(null);
+  const pageRef = useRef(null);
 
   // Scroll to top whenever universe changes
   useEffect(() => {
     if (mainRef.current) {
-      mainRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+      mainRef.current.scrollTo({ top: 0, behavior: 'auto' });
     }
-  }, [activeUniverse]);
 
-  const handleNavigate = (nextUniverse) => {
-    if (nextUniverse === activeUniverse) {
-      mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    setActiveUniverse(nextUniverse);
-  };
+    const page = pageRef.current;
+    if (!page) return;
+
+    const timeline = gsap.timeline({ defaults: { overwrite: 'auto' } });
+    timeline
+      .set(page, { opacity: 0, y: 18, filter: 'blur(4px)' })
+      .to(page, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.42, ease: 'power2.out' });
+
+    return () => timeline.kill();
+  }, []);
 
   // Map IDs to components
   const renderUniverse = () => {
@@ -882,26 +953,18 @@ const App = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden text-white font-rajdhani bg-slate-950">
+      <SnakeCursor />
       <Starfield />
 
       {/* Main Content Area with "Warp" Transition */}
       <main ref={mainRef} className="relative w-full h-full pb-32 pt-10 px-4 md:px-8 overflow-y-auto scroll-smooth">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeUniverse}
-            initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
-            transition={{ duration: 0.5, ease: "anticipate" }}
-            className="min-h-full w-full max-w-7xl mx-auto flex flex-col"
-          >
-            {renderUniverse()}
-          </motion.div>
-        </AnimatePresence>
+        <div ref={pageRef} className="min-h-full w-full max-w-7xl mx-auto flex flex-col will-change-transform">
+          {renderUniverse()}
+        </div>
       </main>
 
       {/* Navigation Dock */}
-      <Navigation activeUniverse={activeUniverse} onNavigate={handleNavigate} />
+      <Navigation activeUniverse={activeUniverse} />
 
       {/* Overlay Vignette for atmosphere */}
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] z-40" />

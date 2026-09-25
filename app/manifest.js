@@ -1,0 +1,12 @@
+export default function manifest() {
+  return {
+    name: 'Prabesh Acharya | Full Stack Developer',
+    short_name: 'Prabesh Acharya',
+    description: 'Portfolio of Prabesh Acharya, a Full Stack Developer from Nepal.',
+    start_url: '/',
+    display: 'standalone',
+    background_color: '#050505',
+    theme_color: '#050505',
+    icons: [{ src: '/favicon.svg', sizes: 'any', type: 'image/svg+xml' }],
+  };
+}

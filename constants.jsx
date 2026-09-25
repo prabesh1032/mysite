@@ -179,6 +179,21 @@ export const PROJECTS = [
 
 ];
 
+export const projectSlug = (title) => ({
+  TypeTheory: 'type-theory',
+  YatraSathi: 'yatra-sathi',
+  'Task Management': 'task-management',
+  'Connect for Study': 'connect-for-study',
+  'Smart Hand Cleaning Services': 'smart-hand-cleaning-services',
+  Chethna: 'chethna',
+  'Seti-Style': 'seti-style',
+  FoodCircle: 'food-circle',
+  TheInkLight: 'the-ink-light',
+  'Lumbini ICT Campus': 'lumbini-ict-campus',
+  'Ankur Nepal': 'ankur-nepal',
+  'Landing Page': 'landing-page',
+}[title] || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''));
+
 export const EXPERIENCE = [
   {
     id: 1,

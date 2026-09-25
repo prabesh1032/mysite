@@ -69,7 +69,10 @@ export default {
     - Lumbini ICT Campus
 
     Professional experience:
-    - Web Developer at Bitmap IT Solution Pvt Ltd (2024–2025)
+    - Full Stack Developer at Cloudlaya (Technozlife Information Technology Pvt. Ltd.) (2026–Present)
+    - MERN Stack Trainee at Broadway Infosys Nepal (2026–Present)
+    - PHP & Laravel Full Stack Developer at Bitmap IT Solution Pvt. Ltd. (2025–2026)
+    - Freelance Full Stack Developer (2023–Present)
     - Built scalable web apps, reusable frontend components, REST API integrations, Laravel/PHP backend, MySQL, responsive UI, performance optimization
 
     Development philosophy:
@@ -120,7 +123,7 @@ export default {
     - Email: praveshach1032@gmail.com
     - Phone: +977 9812965110
     - GitHub: https://github.com/prabesh1032
-    - LinkedIn: https://www.linkedin.com/in/prabesh-acharya-8547a2321/
+    - LinkedIn: https://www.linkedin.com/in/prabesh1032/
     - Instagram: https://www.instagram.com/prabesh_ach/
     - Twitter/X: https://x.com/PrabeshAch33319
     - Facebook: https://www.facebook.com/pravesh.ach/
