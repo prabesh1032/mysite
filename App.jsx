@@ -25,7 +25,7 @@ const GlassPanel = ({ children, className = "" }) => (
 );
 
 const SectionHeading = ({ title, subtitle, headingLevel = 'h2' }) => {
-  const Heading = motion[headingLevel];
+  const Heading = headingLevel === 'h1' ? motion.h1 : motion.h2;
   return (
   <div className="mb-8 text-center">
     <Heading
@@ -49,8 +49,62 @@ const SectionHeading = ({ title, subtitle, headingLevel = 'h2' }) => {
 
 // --- Universes ---
 
-const HeroUniverse = () => (
-  <div className="flex flex-col items-center justify-center min-h-[calc(100vh-10rem)] text-center px-4 relative py-12">
+const HeroUniverse = () => {
+  const heroRef = useRef(null);
+  const imageRef = useRef(null);
+  const nameRef = useRef(null);
+  const roleRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const buttonsRef = useRef([]);
+
+  useEffect(() => {
+    const root = heroRef.current;
+    if (!root) return undefined;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const letters = nameRef.current?.querySelectorAll('.hero-letter');
+    const buttons = buttonsRef.current.filter(Boolean);
+    const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    if (reduceMotion) {
+      gsap.set([imageRef.current, roleRef.current, descriptionRef.current, buttons, letters], { clearProps: 'all' });
+      return undefined;
+    }
+
+    timeline
+      .set(imageRef.current, { scale: 0, opacity: 0, rotation: -12 })
+      .set(letters, { y: 36, opacity: 0 })
+      .set([roleRef.current, descriptionRef.current, buttons], { y: 22, opacity: 0 })
+      .to(imageRef.current, { scale: 1, opacity: 1, rotation: 0, duration: 0.8, ease: 'back.out(1.7)' })
+      .to(letters, { y: 0, opacity: 1, duration: 0.5, stagger: 0.045 }, '-=0.2')
+      .to(roleRef.current, { y: 0, opacity: 1, duration: 0.5 }, '-=0.2')
+      .to(descriptionRef.current, { y: 0, opacity: 1, duration: 0.5 }, '-=0.2')
+      .to(buttons, { y: 0, opacity: 1, duration: 0.45, stagger: 0.1 }, '-=0.15');
+
+    const magneticCleanups = buttons.map((button) => {
+      const onMove = (event) => {
+        const bounds = button.getBoundingClientRect();
+        const x = (event.clientX - (bounds.left + bounds.width / 2)) * 0.18;
+        const y = (event.clientY - (bounds.top + bounds.height / 2)) * 0.18;
+        gsap.to(button, { x, y, duration: 0.35, ease: 'power3.out' });
+      };
+      const onLeave = () => gsap.to(button, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.45)' });
+      button.addEventListener('pointermove', onMove);
+      button.addEventListener('pointerleave', onLeave);
+      return () => {
+        button.removeEventListener('pointermove', onMove);
+        button.removeEventListener('pointerleave', onLeave);
+      };
+    });
+
+    return () => {
+      magneticCleanups.forEach((cleanup) => cleanup());
+      timeline.kill();
+    };
+  }, []);
+
+  return (
+  <div ref={heroRef} className="flex flex-col items-center justify-center min-h-[calc(100vh-10rem)] text-center px-4 relative py-12">
     <motion.div
       animate={{ rotate: 360 }}
       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -63,50 +117,66 @@ const HeroUniverse = () => (
     />
 
     <div className="relative z-10">
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ type: "spring", stiffness: 100, damping: 20 }}
+      <div
+        ref={imageRef}
         className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-neon-blue shadow-[0_0_30px_rgba(0,243,255,0.5)] mx-auto mb-6 overflow-hidden bg-black"
       >
         <Image src="/images/profile2.png" alt="Prabesh Acharya, Full Stack Developer" width={192} height={192} priority className="w-full h-full object-cover" />
-      </motion.div>
+      </div>
 
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-5xl md:text-7xl font-orbitron font-black text-white mb-4 tracking-tighter"
-      >
-        {portfolioData.name.toUpperCase()}
-      </motion.h1>
+      <h1 ref={nameRef} className="text-5xl md:text-7xl font-orbitron font-black text-white mb-4 tracking-tighter" aria-label={portfolioData.name}>
+        {portfolioData.name.toUpperCase().split('').map((letter, index) => (
+          <span key={`${letter}-${index}`} className="hero-letter inline-block">{letter === ' ' ? '\u00a0' : letter}</span>
+        ))}
+      </h1>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
+      <div
+        ref={roleRef}
         className="text-xl md:text-2xl text-neon-blue font-rajdhani bg-neon-blue/10 px-4 py-2 rounded-full inline-block border border-neon-blue/30"
       >
         {portfolioData.role}
-      </motion.div>
+      </div>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="mt-6 text-gray-400 max-w-lg mx-auto font-rajdhani text-lg"
-      >
+      <p ref={descriptionRef} className="mt-6 text-gray-400 max-w-lg mx-auto font-rajdhani text-lg">
         {portfolioData.tagline}
-      </motion.p>
+      </p>
+
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <Link ref={(element) => { buttonsRef.current[0] = element; }} href="/projects" className="rounded-lg bg-gradient-to-r from-neon-blue to-neon-purple px-6 py-3 font-orbitron text-sm font-semibold text-white shadow-[0_0_20px_rgba(0,243,255,0.25)] transition-shadow hover:shadow-[0_0_30px_rgba(0,243,255,0.65)]">
+          Explore My Work
+        </Link>
+        <Link ref={(element) => { buttonsRef.current[1] = element; }} href="/contact" className="rounded-lg border border-neon-blue/50 bg-neon-blue/5 px-6 py-3 font-orbitron text-sm font-semibold text-neon-blue transition-colors hover:bg-neon-blue/15">
+          Let&apos;s Connect
+        </Link>
+      </div>
     </div>
   </div>
-);
+  );
+};
 
-const AboutUniverse = () => (
-  <div className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
+const AboutUniverse = () => {
+  const aboutRef = useRef(null);
+  const contentRef = useRef(null);
+  const imageRef = useRef(null);
+  const resumeRef = useRef(null);
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return undefined;
+    const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    timeline.fromTo(aboutRef.current, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55 })
+      .fromTo(contentRef.current, { opacity: 0, x: -35 }, { opacity: 1, x: 0, duration: 0.65 }, '-=0.25')
+      .fromTo(imageRef.current, { opacity: 0, x: 35, scale: 0.94 }, { opacity: 1, x: 0, scale: 1, duration: 0.7 }, '<')
+      .fromTo(resumeRef.current, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4 }, '-=0.2');
+    return () => timeline.kill();
+  }, []);
+
+  return (
+  <div ref={aboutRef} className="max-w-4xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
     <SectionHeading title="About Me" subtitle="Who I Am" headingLevel="h1" />
     <GlassPanel className="p-8 md:p-12">
       <div className="grid md:grid-cols-2 gap-8 items-center">
-        <div>
+        <div ref={contentRef}>
           <p className="text-gray-300 font-rajdhani text-lg leading-relaxed mb-6">
             {portfolioData.about}
           </p>
@@ -116,7 +186,7 @@ const AboutUniverse = () => (
               <MapPin size={16} className="text-neon-blue" />
               <span>{portfolioData.location}</span>
             </div>
-            <a
+            <a ref={resumeRef}
               href="/resume/Prabesh_Acharya_Full_Stack_Developer_Resume.pdf"
               download
               className="group inline-flex items-center gap-2 rounded-lg border border-neon-purple/50 bg-neon-purple/10 px-5 py-2.5 text-sm font-orbitron text-white hover:bg-neon-purple hover:shadow-[0_0_20px_rgba(148,50,255,0.5)] transition-all"
@@ -127,7 +197,7 @@ const AboutUniverse = () => (
           </div>
         </div>
 
-        <div className="relative h-80 md:h-96 w-full bg-black/50 rounded-lg overflow-hidden border border-neon-purple/30 group">
+        <div ref={imageRef} className="relative h-80 md:h-96 w-full bg-black/50 rounded-lg overflow-hidden border border-neon-purple/30 group">
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
           <Image src="/images/profile.jpg" alt="Prabesh Acharya working as a Full Stack Developer" width={800} height={960} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
           <div className="absolute bottom-4 left-4 z-20">
@@ -138,13 +208,31 @@ const AboutUniverse = () => (
       </div>
     </GlassPanel>
   </div>
-);
+  );
+};
 
-const SkillsUniverse = () => (
-  <div className="max-w-5xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
+const SkillsUniverse = () => {
+  const skillsRef = useRef(null);
+  const cardsRef = useRef([]);
+  const barsRef = useRef([]);
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return undefined;
+    const cards = cardsRef.current.filter(Boolean);
+    const bars = barsRef.current.filter(Boolean);
+    const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    timeline.fromTo(skillsRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 })
+      .fromTo(cards, { opacity: 0, y: 28, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, stagger: 0.07 }, '-=0.1')
+      .fromTo(bars, { scaleX: 0, transformOrigin: 'left center' }, { scaleX: 1, duration: 0.8, stagger: 0.06, ease: 'power2.out' }, '-=0.35');
+    return () => timeline.kill();
+  }, []);
+
+  return (
+  <div ref={skillsRef} className="max-w-5xl mx-auto min-h-full flex flex-col justify-center py-12 md:py-20">
     <SectionHeading title="Skills" subtitle="Tech Stack" headingLevel="h1" />    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {SKILLS.map((skill, idx) => (
-        <motion.div
+        <motion.div ref={(element) => { cardsRef.current[idx] = element; }}
           key={idx}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -156,7 +244,7 @@ const SkillsUniverse = () => (
               <span className="text-neon-purple font-mono text-xl">{skill.level}%</span>
             </div>
             <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-              <motion.div
+              <motion.div ref={(element) => { barsRef.current[idx] = element; }}
                 initial={{ width: 0 }}
                 animate={{ width: `${skill.level}%` }}
                 transition={{ duration: 1, delay: 0.5 }}
@@ -169,15 +257,40 @@ const SkillsUniverse = () => (
       ))}
     </div>
   </div>
-);
+  );
+};
 
 const ProjectsUniverse = () => {
+  const projectsRef = useRef(null);
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return undefined;
+    const cards = cardsRef.current.filter(Boolean);
+    const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    timeline.fromTo(projectsRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 })
+      .fromTo(cards, { opacity: 0, y: 45, rotateX: 5 }, { opacity: 1, y: 0, rotateX: 0, duration: 0.65, stagger: 0.09 }, '-=0.1');
+
+    const cleanups = cards.map((card) => {
+      const onMove = (event) => {
+        const bounds = card.getBoundingClientRect();
+        gsap.to(card, { rotateY: ((event.clientX - bounds.left) / bounds.width - 0.5) * 5, rotateX: ((event.clientY - bounds.top) / bounds.height - 0.5) * -5, transformPerspective: 900, duration: 0.35, ease: 'power2.out' });
+      };
+      const onLeave = () => gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.5, ease: 'power3.out' });
+      card.addEventListener('pointermove', onMove);
+      card.addEventListener('pointerleave', onLeave);
+      return () => { card.removeEventListener('pointermove', onMove); card.removeEventListener('pointerleave', onLeave); };
+    });
+    return () => { timeline.kill(); cleanups.forEach((cleanup) => cleanup()); };
+  }, []);
+
   return (
-    <div className="max-w-6xl mx-auto min-h-full flex flex-col justify-center relative py-12 md:py-20">
+    <div ref={projectsRef} className="max-w-6xl mx-auto min-h-full flex flex-col justify-center relative py-12 md:py-20" style={{ perspective: '1000px' }}>
       <SectionHeading title="Projects" subtitle="Featured Work" headingLevel="h1" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {PROJECTS.map((project, idx) => (
-          <motion.div
+          <motion.div ref={(element) => { cardsRef.current[idx] = element; }}
             key={project.id}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
